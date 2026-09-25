@@ -559,7 +559,18 @@ FROM emissions;
 SELECT COUNT(*) FROM emissions WHERE value < 0;
 SELECT unit, COUNT(*) FROM emissions WHERE unit != 'MIO_T' GROUP BY unit;
 
--- count: rows in = rows out + rows rejected, and no gap that a GROUP BY would hide (it shows only groups that exist)
+-- count: rows in = rows out + rows rejected
+-- completeness: compare with what the contract EXPECTS, never with what the data happens to contain.
+-- members is the contract's list, one row per expected country; the contract fixes the years, 2010 to 2024.
+SELECT COUNT(DISTINCT (geo, year)) AS present            -- must equal 27 members x 15 years = 405
+FROM emissions
+WHERE geo IN (SELECT geo FROM members) AND year BETWEEN 2010 AND 2024;
+
+SELECT geo FROM members                                    -- must return no rows: an expected country with no data
+WHERE geo NOT IN (SELECT geo FROM emissions WHERE geo IS NOT NULL);   -- NOT IN meets a NULL: no rows, silently
+
+-- a locator, not a completeness check: which countries have fewer years than the data holds. It passes when a year
+-- is missing for EVERY country, and a country with no rows makes no group, so it cannot fail for it.
 SELECT geo, COUNT(DISTINCT year) AS years_present
 FROM emissions
 GROUP BY geo

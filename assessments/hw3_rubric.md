@@ -23,19 +23,19 @@ The grader unzips your submission, runs `uv sync` and `uv run python pipeline.py
 
 ## How scoring works
 
-Every criterion is scored at **exactly one of its three anchor values** — no in-between points. Read each table from the bottom up: a submission that meets **any** condition in the *Needs Improvement* row scores that; otherwise, one that meets **every** condition in the *Excellent* row scores Excellent; everything else scores *Satisfactory*. So each submission meets exactly one anchor, and two graders reach the same number. The video is scored per element.
+Every criterion is scored at **exactly one of its three anchor values** — no in-between points. Read each table from the bottom up: a submission that meets **any** condition in the *Needs Improvement* row scores that; otherwise, one that meets **every** condition in the *Excellent* row scores Excellent; everything else scores *Satisfactory*. So each submission meets exactly one anchor. The rule picks the anchor; judging the evidence against each condition is still a grader's call, and borderline submissions are scored by two graders. The video is scored per element.
 
 ## Rubric
 
-### 1. Correct fix: the pipeline and its gold table (25 points)
+### 1. Correct fix: the pipeline and its gold table (18 points)
 
 | Level | Points | Criteria |
 |---|---|---|
-| **Excellent** | 25 | From a fresh unzip, `uv sync` and `uv run python pipeline.py` complete and write gold. `gold.intensity` matches the key's numbers: the EU-27 per person and per unit of GDP, by sector, for 2010 and 2024, and every member's 2024 total. The contract is followed exactly (the unit, the seven codes, the 27 members, 2010–2024, the World Bank denominators, the EU-27 as a ratio of sums). Every cleaner returns the full accounting — rejected, excluded, quarantined, aggregate, retained — and it adds up to what came in. The World Bank cleaner carries each page's number down to every record, and its page counts set what each page promises beside what was read from it. `docs/dictionary.md` documents every silver table — its key, and every column's type, meaning, unit, allowed values, what missing means, and what was done to it. The trap log names, with pasted evidence, every trap that would have changed a gold number, and its World Bank entry opens with the prediction written before the query. `data/raw/` is untouched. |
-| **Satisfactory** | 16 | The pipeline runs from a fresh unzip, `data/raw/` is untouched, and gold departs from the key in at most one way (one contract decision not followed, such as the EU-27 as an average of 27 ratios or a different total, or one source read incompletely) — but at least one Excellent requirement is not met: gold departs in that one way; or the trap log misses a trap it survived, or states one without evidence; or a cleaner's accounting is missing or does not add up; or the page is not carried down or the page counts are missing; or the dictionary is incomplete. |
-| **Needs Improvement** | 6 | The pipeline does not run from a fresh unzip; or gold departs from the key in two or more ways; or `data/raw/` was edited. |
+| **Excellent** | 18 | From a fresh unzip, `uv sync` and `uv run python pipeline.py` complete and write gold. `gold.intensity` matches the key's numbers: the EU-27 per person and per unit of GDP, by sector, for 2010 and 2024, and every member's 2024 total. The contract is followed exactly (the unit, the seven codes, the 27 members, 2010–2024, the World Bank denominators, the EU-27 as a ratio of sums). Every cleaner returns the full accounting — rejected, excluded, quarantined, aggregate, retained — and it adds up to what came in. The World Bank cleaner carries each page's number down to every record, and its page counts set what each page promises beside what was read from it. `data/raw/` is untouched. |
+| **Satisfactory** | 12 | The pipeline runs from a fresh unzip, `data/raw/` is untouched, and gold departs from the key in at most one way (one contract decision not followed, such as the EU-27 as an average of 27 ratios or a different total, or one source read incompletely) — but at least one Excellent requirement is not met: gold departs in that one way; or a cleaner's accounting is missing or does not add up; or the page is not carried down or the page counts are missing. Documentation is not scored here: an incomplete dictionary or trap log costs points in criterion 8 only. |
+| **Needs Improvement** | 4 | The pipeline does not run from a fresh unzip; or gold departs from the key in two or more ways; or `data/raw/` was edited. |
 
-**What we're looking for:** a table the ministry can rebuild from your commits alone, whose every number follows the contract — and a trap log that shows you found each trap, not that you were lucky. A right number with no trap-log entry for the trap it survived could have been right by accident.
+**What we're looking for:** a table the ministry can rebuild from your commits alone, whose every number follows the contract. The documentation that shows you found each trap, rather than being lucky, is criterion 8.
 
 ### 2. Verification (15 points)
 
@@ -78,7 +78,7 @@ Your voice is required: a silent recording scores 0 on all four elements — the
 
 | Level | Points | Criteria |
 |---|---|---|
-| **Excellent** | 15 | All four specifics present in `REFLECTION.md`: a quoted sentence from one of your three notes, and why it is your strongest; a step in the loop you admit to skipping and what it cost; the failure class you were slowest at (grain, NULLs, joins, JSON, cleaning, or checks) and a concrete plan; one thing you stopped and one thing you started doing with AI. |
+| **Excellent** | 15 | All four specifics present in `REFLECTION.md`: a quoted sentence from one of your three notes, and why it is your strongest; a step of the loop you changed or deliberately kept, with a concrete example and what it cost or saved; the failure class you were slowest at (grain, NULLs, joins, JSON, cleaning, or checks) and a concrete plan; how your use of AI changed, with one example — or, if you did not use it, how you verified your work instead, with one example. Every specific can be met honestly by every student: none requires a confession or a particular story. |
 | **Satisfactory** | 10 | Exactly three of the four specifics; the rest is general. |
 | **Needs Improvement** | 4 | Two or fewer of the four specifics: generalities, or a reflection that could have been written without re-reading your own work. |
 
@@ -104,9 +104,19 @@ Your voice is required: a silent recording scores 0 on all four elements — the
 
 **What we're looking for:** AI writes SQL that runs. Running is not right — say how you knew.
 
+### 8. Documentation: the data dictionary and the trap log (7 points)
+
+| Level | Points | Criteria |
+|---|---|---|
+| **Excellent** | 7 | `docs/dictionary.md` documents every silver table — its key, and every column's type, meaning, unit, allowed values, what missing means, and what was done to it (`page` included). The trap log in `DIAGNOSIS.md` names, with pasted evidence, every trap that would have changed a gold number, and its World Bank entry opens with the prediction written before the query. |
+| **Satisfactory** | 4 | Neither of the other rows. For example: a silver table or some columns' cells missing from the dictionary; a trap that would have changed a gold number missing from the log, or stated without evidence; the World Bank entry without its prediction. |
+| **Needs Improvement** | 2 | No dictionary, or the scaffold's dictionary unfilled; or no trap log, or entries that paste no evidence at all. |
+
+**What we're looking for:** a reader who never saw your code can say what each silver column means, and see, trap by trap, that you found each problem before it could change a number. A right number with no trap-log entry for the trap it survived could have been right by accident; that costs points here, and only here.
+
 ## General Notes
 
-- The note, the video, and the reflection together (45 points) outweigh the gold table (25). This is deliberate: the course grades whether you can show and say why a number is right, not only the number.
+- The note, the video, and the reflection together (45 points) outweigh the gold table (18) and its documentation (7). This is deliberate: the course grades whether you can show and say why a number is right, not only the number.
 - The full accounting (practised in Lab 5) and all four check families (practised in Lab 6) are required in this homework. If you missed either lab or did not finish it, the Block 5 and Block 6 slides and the course site's *SQL and pipeline reference* (sections 8–10) show both.
 - Each output is pasted once, in the trap log; the dictionary, the note and other traps refer to it (*see Trap N*), and a trap's verification names its check. Pasting the same output twice earns nothing more.
 - The contract's decisions are the ministry's: a different unit, total, membership, or final year is a different table, graded as one.

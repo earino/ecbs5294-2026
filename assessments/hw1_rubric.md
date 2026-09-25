@@ -24,15 +24,17 @@ in `DIAGNOSIS.md`, whether or not your own query was ever wrong: five parts for 
 you avoided, citing the notebook's cells by ID instead of pasting them again. A reconciliation cell shows that
 revenue by month, revenue by country, and the grand total agree to the penny.
 
-This rubric grades the *reasons* at least as much as the numbers. A right number is only worth full marks when the
-trap log shows the data issue that would have made it wrong was found: otherwise it could be right by accident.
+This rubric grades the *reasons* at least as much as the numbers. Criterion 1 scores the numbers; criterion 3 scores
+whether the trap log shows the data issue behind each one was found. A missing trap-log entry costs marks once, in
+criterion 3, never in both.
 
 ## How scoring works
 
 Every criterion is scored at **exactly one of its three anchor values** — no in-between points. Read each table from
 the bottom up: a submission that meets **any** condition in the *Needs Improvement* row scores that; otherwise, one that
 meets **every** condition in the *Excellent* row scores Excellent; everything else scores *Satisfactory*. So each
-submission meets exactly one anchor, and two graders reading this rubric reach the same number. The video is scored
+submission meets exactly one anchor. The rule picks the anchor; judging the evidence against each condition is still a
+grader's call, and borderline submissions are scored by two graders. The video is scored
 per element.
 
 ## Rubric
@@ -41,8 +43,8 @@ per element.
 
 | Level | Points | Criteria |
 |---|---|---|
-| **Excellent** | 30 | All of these: **6 or 7 of the 7** core numbers match the key — the number *and* its population: a top ten is the same ten products in the same order, money to the penny; **every matching number has a trap-log entry** for the data issue that would have broken it; and the notebook runs top to bottom after *Restart*, then *Run All*, from a fresh unzip. |
-| **Satisfactory** | 20 | Neither of the other rows. For example: 5 numbers match; or 6 or 7 match but a matching number has no trap-log entry for its issue (revenue is right and there is no entry on the cancellation invoices); or the notebook runs from a fresh unzip only when its cells are run out of order. |
+| **Excellent** | 30 | All of these: **6 or 7 of the 7** core numbers match the key — the number *and* its population: a top ten is the same ten products in the same order, money to the penny; and the notebook runs top to bottom after *Restart*, then *Run All*, from a fresh unzip. |
+| **Satisfactory** | 20 | Neither of the other rows. For example: 5 numbers match; or the notebook runs from a fresh unzip only when its cells are run out of order. |
 | **Needs Improvement** | 8 | Either of these: **4 or fewer** numbers match; or the notebook does not run from a fresh unzip in any order. |
 
 **What we're looking for:** each number computed to the brief's sentence, not to a filter that happens to land close.
