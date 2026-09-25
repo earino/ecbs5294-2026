@@ -74,8 +74,8 @@ Your voice is required: a silent recording scores 0 on all four elements. Open b
 
 | Level | Points | Criteria |
 |---|---|---|
-| **Excellent** | 10 | All of these: `GIT_LOG.txt` shows a commit after each repair, with messages that name the cause, and **every commit that changes a join carries its three counts** (one line; the join's ID helps the reader); `git status` was clean at the end; the archive contains what `SUBMITTING.md` lists and nothing it forbids; the video opens by naming the homework and the repo. |
-| **Satisfactory** | 6 | Neither of the other rows. For example: messages are "fix" or "update"; a join commit lacks its counts; one required file other than `GIT_LOG.txt` is missing from the archive; the video does not open with the names. |
+| **Excellent** | 10 | All of these: `GIT_LOG.txt` shows a commit after each repair, with messages that name the cause, and **every commit that changes a join cites the join's ID** (its three counts live in the Joins section, not in the message); `git status` was clean at the end; the archive contains what `SUBMITTING.md` lists and nothing it forbids; the video opens by naming the homework and the repo. |
+| **Satisfactory** | 6 | Neither of the other rows. For example: messages are "fix" or "update"; a join commit cites no join ID; one required file other than `GIT_LOG.txt` is missing from the archive; the video does not open with the names. |
 | **Needs Improvement** | 2 | Any of these: one commit only; no `GIT_LOG.txt`; two or more required files missing from the archive; `.venv/` in the archive; `data/raw/` edited. |
 
 **What we're looking for:** a history a colleague can read, and an archive that runs from a fresh unzip.

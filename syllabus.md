@@ -51,7 +51,7 @@ each hands you a colleague's report that runs without an error and prints a wron
 query the question actually needs, add the check that would have caught it, and explain it to the person next to you.
 
 Expect about 20–25 hours of work outside class, most of it on the three homeworks: about 3–4 hours for Homework 1
-(the shortest, because it shares its week with DS1's last homework; its two stretch questions are not graded), 6–7 for Homework 2, 8–10 for Homework 3, and 3–4
+(the shortest, because it shares its week with DS1's last homework; its two stretch questions are not graded), 6–7 for Homework 2, 8–9 for Homework 3, and 3–4
 preparing for the exam, the mock and the Knowledge check 3 retry included. These are estimates; if you are well past one, say so on the Moodle forum. It is not a
 mark against you.
 
