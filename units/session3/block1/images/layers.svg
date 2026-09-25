@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+  </defs>
+  <!-- bronze -->
+  <rect x="30" y="60" width="300" height="230" rx="14" fill="#f3e3cf" stroke="#a0662b" stroke-width="3"/>
+  <text x="180" y="100" text-anchor="middle" font-size="30" font-weight="bold" fill="#7a4a17">bronze</text>
+  <text x="180" y="135" text-anchor="middle" font-size="20" fill="#333">data/raw/</text>
+  <text x="180" y="175" text-anchor="middle" font-size="19" fill="#333">the file as it arrived</text>
+  <text x="180" y="203" text-anchor="middle" font-size="19" fill="#333">every cell as text</text>
+  <text x="180" y="231" text-anchor="middle" font-size="19" fill="#333">never edited</text>
+  <text x="180" y="259" text-anchor="middle" font-size="19" fill="#333">committed to Git</text>
+  <!-- silver -->
+  <rect x="450" y="60" width="300" height="230" rx="14" fill="#e6e9ee" stroke="#6b7280" stroke-width="3"/>
+  <text x="600" y="100" text-anchor="middle" font-size="30" font-weight="bold" fill="#374151">silver</text>
+  <text x="600" y="135" text-anchor="middle" font-size="20" fill="#333">data/silver/</text>
+  <text x="600" y="175" text-anchor="middle" font-size="19" fill="#333">typed, one unit</text>
+  <text x="600" y="203" text-anchor="middle" font-size="19" fill="#333">one row per stated key</text>
+  <text x="600" y="231" text-anchor="middle" font-size="19" fill="#333">flags kept, rejects counted</text>
+  <text x="600" y="259" text-anchor="middle" font-size="19" fill="#333">+ a data dictionary</text>
+  <!-- gold -->
+  <rect x="870" y="60" width="300" height="230" rx="14" fill="#fbf1c7" stroke="#b08900" stroke-width="3"/>
+  <text x="1020" y="100" text-anchor="middle" font-size="30" font-weight="bold" fill="#7c6200">gold</text>
+  <text x="1020" y="135" text-anchor="middle" font-size="20" fill="#333">data/gold/</text>
+  <text x="1020" y="175" text-anchor="middle" font-size="19" fill="#333">the answer</text>
+  <text x="1020" y="203" text-anchor="middle" font-size="19" fill="#333">at the question's grain</text>
+  <text x="1020" y="231" text-anchor="middle" font-size="19" fill="#333">with its note</text>
+  <!-- arrows (scripts) -->
+  <line x1="332" y1="175" x2="446" y2="175" stroke="#444" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="389" y="160" text-anchor="middle" font-size="18" font-family="Menlo, monospace" fill="#111">clean.py</text>
+  <line x1="752" y1="175" x2="866" y2="175" stroke="#444" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="809" y="160" text-anchor="middle" font-size="18" font-family="Menlo, monospace" fill="#111">report.py</text>
+  <!-- gates, empty -->
+  <rect x="377" y="195" width="24" height="44" fill="#ffffff" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="389" y="262" text-anchor="middle" font-size="15" fill="#6b7280">check?</text>
+  <rect x="797" y="195" width="24" height="44" fill="#ffffff" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="809" y="262" text-anchor="middle" font-size="15" fill="#6b7280">check?</text>
+  <!-- keys -->
+  <text x="180" y="330" text-anchor="middle" font-size="16" fill="#555">one row per series:</text>
+  <text x="180" y="354" text-anchor="middle" font-size="15" font-family="Menlo, monospace" fill="#111">(freq, unit, airpol,</text>
+  <text x="180" y="374" text-anchor="middle" font-size="15" font-family="Menlo, monospace" fill="#111">src_crf, geo)</text>
+  <text x="180" y="398" text-anchor="middle" font-size="16" fill="#555">years as columns</text>
+  <text x="600" y="330" text-anchor="middle" font-size="16" fill="#555">long: + year · silver, after</text>
+  <text x="600" y="352" text-anchor="middle" font-size="16" fill="#555">freq A, airpol GHG, unit MIO_T:</text>
+  <text x="600" y="378" text-anchor="middle" font-size="17" font-family="Menlo, monospace" fill="#111">(geo, year, src_crf)</text>
+  <text x="1020" y="330" text-anchor="middle" font-size="16" fill="#555">one row per</text>
+  <text x="1020" y="356" text-anchor="middle" font-size="17" font-family="Menlo, monospace" fill="#111">(geo, year) or geo</text>
+  <text x="1020" y="380" text-anchor="middle" font-size="16" fill="#555">after a sector is chosen</text>
+  <text x="600" y="30" text-anchor="middle" font-size="18" fill="#555">every layer is made by code from the layer below; every run makes the same tables</text>
+</svg>

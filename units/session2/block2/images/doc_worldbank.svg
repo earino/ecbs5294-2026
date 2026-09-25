@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 350" width="1200" height="350"><defs><marker id="arrow-meta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker><marker id="arrow-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="arrow-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/></marker><marker id="arrow-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker></defs><rect width="1200" height="350" fill="#ffffff"/>
+<rect x="20" y="40" width="560" height="296" rx="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5"/>
+<text x="34" y="62" font-size="15" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">SP.POP.TOTL_page1.json — the World Bank&#x27;s answer, page 1</text>
+<text x="34" y="90" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">[</text>
+<rect x="28" y="96" width="544" height="20" rx="3" fill="#f3f4f6"/>
+<text x="34" y="111" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve"> {&quot;page&quot;: 1, &quot;pages&quot;: 4, &quot;per_page&quot;: 1000,</text>
+<rect x="28" y="117" width="544" height="20" rx="3" fill="#f3f4f6"/>
+<text x="34" y="132" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">  &quot;total&quot;: 3975, &quot;lastupdated&quot;: &quot;2026-07-13&quot;, ...},</text>
+<text x="34" y="153" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve"> [</text>
+<rect x="28" y="159" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="34" y="174" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">  {&quot;country&quot;: {&quot;id&quot;: &quot;ZH&quot;,</text>
+<rect x="28" y="180" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="34" y="195" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">               &quot;value&quot;: &quot;Africa Eastern and Southern&quot;},</text>
+<rect x="28" y="201" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="34" y="216" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">   &quot;countryiso3code&quot;: &quot;AFE&quot;, &quot;date&quot;: &quot;2024&quot;,</text>
+<rect x="28" y="222" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="34" y="237" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">   &quot;value&quot;: 769280888, ...},</text>
+<rect x="28" y="243" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="34" y="258" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">  {... &quot;date&quot;: &quot;2023&quot;, &quot;value&quot;: 750491370, ...},</text>
+<text x="34" y="279" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">  ... 998 more records on this page</text>
+<text x="34" y="300" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve"> ]</text>
+<text x="34" y="321" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">]</text>
+<text x="660" y="82" font-size="15" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">the metadata: facts about the answer, not rows</text>
+<rect x="660" y="90" width="180" height="48" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+<rect x="660" y="90" width="180" height="24" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+<text x="668" y="107" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">page</text>
+<text x="668" y="131" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">1</text>
+<text x="722" y="107" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">pages</text>
+<text x="722" y="131" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">4</text>
+<text x="785" y="107" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">total</text>
+<text x="785" y="131" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">3975</text>
+<text x="660" y="242" font-size="15" fill="#1d4ed8" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">population: one row per country per year</text>
+<rect x="660" y="250" width="441" height="72" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="660" y="250" width="441" height="24" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="668" y="267" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">iso3</text>
+<text x="668" y="291" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">AFE</text>
+<text x="668" y="315" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">AFE</text>
+<text x="722" y="267" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">country</text>
+<text x="722" y="291" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">Africa Eastern and Sou…</text>
+<text x="722" y="315" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">Africa Eastern and Sou…</text>
+<text x="947" y="267" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">year</text>
+<text x="947" y="291" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2024</text>
+<text x="947" y="315" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2023</text>
+<text x="1001" y="267" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">population</text>
+<text x="1001" y="291" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">769280888</text>
+<text x="1001" y="315" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">750491370</text>
+<text x="660" y="342" font-size="14" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="normal" text-anchor="start" xml:space="preserve">1,000 rows from this page; the metadata says 3,975 in all</text>
+<path d="M580,106 C617.5,106 617.5,102 655,102" fill="none" stroke="#6b7280" stroke-width="2.5" marker-end="url(#arrow-meta)"/>
+<path d="M580,190 C617.5,190 617.5,262 655,262" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow-a)"/>
+</svg>

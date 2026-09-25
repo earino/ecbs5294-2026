@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560"><defs><marker id="arrow-meta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker><marker id="arrow-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="arrow-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/></marker><marker id="arrow-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker></defs><rect width="1200" height="560" fill="#ffffff"/>
+<text x="20" y="38" font-size="16" fill="#111827" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">A list of records → rows</text>
+<rect x="20" y="50" width="560" height="86" rx="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5"/>
+<text x="34" y="72" font-size="15" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">document</text>
+<rect x="28" y="85" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="34" y="100" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">[{&quot;iso3&quot;: &quot;HUN&quot;, &quot;year&quot;: 2024, &quot;pop&quot;: 9562065},</text>
+<rect x="28" y="106" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="34" y="121" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve"> {&quot;iso3&quot;: &quot;HUN&quot;, &quot;year&quot;: 2023, &quot;pop&quot;: 9592186}]</text>
+<text x="270" y="162" font-size="15" fill="#1d4ed8" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve"></text>
+<rect x="270" y="170" width="189" height="72" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="270" y="170" width="189" height="24" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="278" y="187" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">iso3</text>
+<text x="278" y="211" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">HUN</text>
+<text x="278" y="235" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">HUN</text>
+<text x="332" y="187" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">year</text>
+<text x="332" y="211" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2024</text>
+<text x="332" y="235" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2023</text>
+<text x="386" y="187" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">pop</text>
+<text x="386" y="211" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">9562065</text>
+<text x="386" y="235" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">9592186</text>
+<path d="M140,136 C203.0,136 203.0,194 266,194" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow-a)"/>
+<text x="620" y="38" font-size="16" fill="#111827" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">A dictionary keyed by id → the key becomes a column</text>
+<rect x="620" y="50" width="560" height="86" rx="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5"/>
+<text x="634" y="72" font-size="15" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">document</text>
+<rect x="628" y="85" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="634" y="100" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">{&quot;HUN&quot;: {&quot;name&quot;: &quot;Hungary&quot;, &quot;capital&quot;: &quot;Budapest&quot;},</text>
+<rect x="628" y="106" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="634" y="121" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve"> &quot;BRA&quot;: {&quot;name&quot;: &quot;Brazil&quot;,  &quot;capital&quot;: &quot;Brasilia&quot;}}</text>
+<text x="870" y="162" font-size="15" fill="#1d4ed8" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve"></text>
+<rect x="870" y="170" width="216" height="72" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="870" y="170" width="216" height="24" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="878" y="187" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">id</text>
+<text x="878" y="211" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">HUN</text>
+<text x="878" y="235" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">BRA</text>
+<text x="923" y="187" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">name</text>
+<text x="923" y="211" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">Hungary</text>
+<text x="923" y="235" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">Brazil</text>
+<text x="1004" y="187" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">capital</text>
+<text x="1004" y="211" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">Budapest</text>
+<text x="1004" y="235" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">Brasilia</text>
+<path d="M740,136 C803.0,136 803.0,194 866,194" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow-a)"/>
+<text x="20" y="288" font-size="16" fill="#111827" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">A dictionary of dictionaries → (outer key, inner key, value)</text>
+<rect x="20" y="300" width="560" height="86" rx="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5"/>
+<text x="34" y="322" font-size="15" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">document</text>
+<rect x="28" y="335" width="544" height="20" rx="3" fill="#dcfce7"/>
+<text x="34" y="350" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">{&quot;2017-01-02&quot;: {&quot;BRL&quot;: 3.4265},</text>
+<rect x="28" y="356" width="544" height="20" rx="3" fill="#dcfce7"/>
+<text x="34" y="371" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve"> &quot;2017-01-03&quot;: {&quot;BRL&quot;: 3.3916}, ...}</text>
+<text x="270" y="412" font-size="15" fill="#15803d" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve"></text>
+<rect x="270" y="420" width="270" height="72" fill="#ffffff" stroke="#15803d" stroke-width="2"/>
+<rect x="270" y="420" width="270" height="24" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+<text x="278" y="437" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">date</text>
+<text x="278" y="461" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2017-01-02</text>
+<text x="278" y="485" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2017-01-03</text>
+<text x="386" y="437" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">currency</text>
+<text x="386" y="461" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">BRL</text>
+<text x="386" y="485" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">BRL</text>
+<text x="476" y="437" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">value</text>
+<text x="476" y="461" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">3.4265</text>
+<text x="476" y="485" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">3.3916</text>
+<path d="M140,386 C203.0,386 203.0,444 266,444" fill="none" stroke="#15803d" stroke-width="2.5" marker-end="url(#arrow-c)"/>
+<text x="620" y="288" font-size="16" fill="#111827" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">A list inside a record → a child table, keyed back</text>
+<rect x="620" y="300" width="560" height="107" rx="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5"/>
+<text x="634" y="322" font-size="15" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">document</text>
+<rect x="628" y="335" width="544" height="20" rx="3" fill="#dbeafe"/>
+<text x="634" y="350" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">{&quot;order_id&quot;: &quot;04a2b4ee…&quot;, &quot;state&quot;: &quot;SP&quot;,</text>
+<rect x="628" y="356" width="544" height="20" rx="3" fill="#ffedd5"/>
+<text x="634" y="371" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve"> &quot;items&quot;: [{&quot;n&quot;: 1, &quot;price&quot;: 145.00},</text>
+<rect x="628" y="377" width="544" height="20" rx="3" fill="#ffedd5"/>
+<text x="634" y="392" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">           {&quot;n&quot;: 2, &quot;price&quot;: 19.99}]}</text>
+<text x="630" y="442" font-size="15" fill="#1d4ed8" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">orders</text>
+<rect x="630" y="450" width="162" height="48" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="630" y="450" width="162" height="24" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="638" y="467" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">order_id</text>
+<text x="638" y="491" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">04a2b4ee…</text>
+<text x="737" y="467" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">state</text>
+<text x="737" y="491" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">SP</text>
+<text x="870" y="442" font-size="15" fill="#c2410c" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">order_items</text>
+<rect x="870" y="450" width="198" height="72" fill="#ffffff" stroke="#c2410c" stroke-width="2"/>
+<rect x="870" y="450" width="198" height="24" fill="#ffedd5" stroke="#c2410c" stroke-width="2"/>
+<text x="878" y="467" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">order_id</text>
+<text x="878" y="491" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">04a2b4ee…</text>
+<text x="878" y="515" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">04a2b4ee…</text>
+<text x="977" y="467" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">n</text>
+<text x="977" y="491" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">1</text>
+<text x="977" y="515" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2</text>
+<text x="1004" y="467" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">price</text>
+<text x="1004" y="491" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">145.00</text>
+<text x="1004" y="515" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">19.99</text>
+<text x="870" y="542" font-size="14" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="normal" text-anchor="start" xml:space="preserve">key (order_id, n); order_id points back</text>
+<path d="M680,407 L680,430" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow-a)"/>
+<path d="M950,407 L950,430" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arrow-b)"/>
+</svg>

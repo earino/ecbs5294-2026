@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 370" width="1200" height="370"><defs><marker id="arrow-meta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker><marker id="arrow-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="arrow-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/></marker><marker id="arrow-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker></defs><rect width="1200" height="370" fill="#ffffff"/>
+<rect x="20" y="40" width="520" height="233" rx="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5"/>
+<text x="34" y="62" font-size="15" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">toy_rates.json — three real days of ECB rates</text>
+<text x="34" y="90" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">{</text>
+<rect x="28" y="96" width="504" height="20" rx="3" fill="#f3f4f6"/>
+<text x="34" y="111" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">  &quot;amount&quot;: 1.0,</text>
+<rect x="28" y="117" width="504" height="20" rx="3" fill="#f3f4f6"/>
+<text x="34" y="132" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">  &quot;base&quot;: &quot;EUR&quot;,</text>
+<text x="34" y="153" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">  &quot;rates&quot;: {</text>
+<rect x="28" y="159" width="504" height="20" rx="3" fill="#dcfce7"/>
+<text x="34" y="174" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">    &quot;2017-01-02&quot;: {&quot;BRL&quot;: 3.4265},</text>
+<rect x="28" y="180" width="504" height="20" rx="3" fill="#dcfce7"/>
+<text x="34" y="195" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">    &quot;2017-01-03&quot;: {&quot;BRL&quot;: 3.3916},</text>
+<rect x="28" y="201" width="504" height="20" rx="3" fill="#dcfce7"/>
+<text x="34" y="216" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">    &quot;2017-01-04&quot;: {&quot;BRL&quot;: 3.3784}</text>
+<text x="34" y="237" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">  }</text>
+<text x="34" y="258" font-size="14.5" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">}</text>
+<text x="640" y="82" font-size="15" fill="#6b7280" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">read_json_auto: one row; the dates became field names</text>
+<rect x="640" y="90" width="342" height="48" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+<rect x="640" y="90" width="342" height="24" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+<text x="648" y="107" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">amount</text>
+<text x="648" y="131" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">1.0</text>
+<text x="720" y="107" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">base</text>
+<text x="720" y="131" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">EUR</text>
+<text x="774" y="107" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">rates</text>
+<text x="774" y="131" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">{&quot;2017-01-02&quot;: {…}, …}</text>
+<text x="640" y="252" font-size="15" fill="#15803d" style="font-family:'Helvetica Neue',Arial,sans-serif" font-weight="bold" text-anchor="start" xml:space="preserve">the loop: one row per date</text>
+<rect x="640" y="260" width="180" height="96" fill="#ffffff" stroke="#15803d" stroke-width="2"/>
+<rect x="640" y="260" width="180" height="24" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+<text x="648" y="277" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">date</text>
+<text x="648" y="301" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2017-01-02</text>
+<text x="648" y="325" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2017-01-03</text>
+<text x="648" y="349" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">2017-01-04</text>
+<text x="756" y="277" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="bold" text-anchor="start" xml:space="preserve">value</text>
+<text x="756" y="301" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">3.4265</text>
+<text x="756" y="325" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">3.3916</text>
+<text x="756" y="349" font-size="14" fill="#111827" style="font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace" font-weight="normal" text-anchor="start" xml:space="preserve">3.3784</text>
+<path d="M540,148 C587.5,148 587.5,102 635,102" fill="none" stroke="#6b7280" stroke-width="2.5" marker-end="url(#arrow-meta)"/>
+<path d="M540,190 C587.5,190 587.5,272 635,272" fill="none" stroke="#15803d" stroke-width="2.5" marker-end="url(#arrow-c)"/>
+</svg>

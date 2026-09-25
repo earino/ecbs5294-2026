@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+  </defs>
+  <rect x="30" y="60" width="300" height="200" rx="14" fill="#f3e3cf" stroke="#a0662b" stroke-width="3"/>
+  <text x="180" y="100" text-anchor="middle" font-size="30" font-weight="bold" fill="#7a4a17">bronze</text>
+  <text x="180" y="135" text-anchor="middle" font-size="20" fill="#333">data/raw/</text>
+  <text x="180" y="175" text-anchor="middle" font-size="19" fill="#333">never edited</text>
+  <rect x="450" y="60" width="300" height="200" rx="14" fill="#e6e9ee" stroke="#6b7280" stroke-width="3"/>
+  <text x="600" y="100" text-anchor="middle" font-size="30" font-weight="bold" fill="#374151">silver</text>
+  <text x="600" y="135" text-anchor="middle" font-size="20" fill="#333">data/silver/</text>
+  <text x="600" y="175" text-anchor="middle" font-size="19" fill="#333">+ rejects.csv, with reasons</text>
+  <rect x="870" y="60" width="300" height="200" rx="14" fill="#fbf1c7" stroke="#b08900" stroke-width="3"/>
+  <text x="1020" y="100" text-anchor="middle" font-size="30" font-weight="bold" fill="#7c6200">gold</text>
+  <text x="1020" y="135" text-anchor="middle" font-size="20" fill="#333">data/gold/</text>
+  <text x="1020" y="175" text-anchor="middle" font-size="19" fill="#333">+ the note</text>
+  <line x1="332" y1="150" x2="446" y2="150" stroke="#444" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="389" y="135" text-anchor="middle" font-size="18" font-family="Menlo, monospace" fill="#111">clean.py</text>
+  <line x1="752" y1="150" x2="866" y2="150" stroke="#444" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="809" y="135" text-anchor="middle" font-size="18" font-family="Menlo, monospace" fill="#111">report.py</text>
+  <!-- gates, filled -->
+  <rect x="377" y="170" width="24" height="44" fill="#2563eb"/>
+  <rect x="797" y="170" width="24" height="44" fill="#b91c1c"/>
+  <rect x="1158" y="170" width="24" height="44" fill="#b91c1c"/>
+  <text x="389" y="300" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d4ed8">domain</text>
+  <text x="389" y="324" text-anchor="middle" font-size="16" fill="#1d4ed8">a bad ROW:</text>
+  <text x="389" y="346" text-anchor="middle" font-size="16" fill="#1d4ed8">quarantine it,</text>
+  <text x="389" y="368" text-anchor="middle" font-size="16" fill="#1d4ed8">count it, go on</text>
+  <text x="809" y="300" text-anchor="middle" font-size="18" font-weight="bold" fill="#991b1b">key · count</text>
+  <text x="809" y="324" text-anchor="middle" font-size="16" fill="#991b1b">a broken TABLE:</text>
+  <text x="809" y="346" text-anchor="middle" font-size="16" fill="#991b1b">stop the run,</text>
+  <text x="809" y="368" text-anchor="middle" font-size="16" fill="#991b1b">the number in the message</text>
+  <text x="1080" y="300" text-anchor="middle" font-size="18" font-weight="bold" fill="#991b1b">reconciliation</text>
+  <text x="1080" y="324" text-anchor="middle" font-size="16" fill="#991b1b">two computations</text>
+  <text x="1080" y="346" text-anchor="middle" font-size="16" fill="#991b1b">disagree: stop</text>
+  <text x="600" y="30" text-anchor="middle" font-size="18" fill="#555">the Block 5 figure, with the gates filled in: scripts/checks.py</text>
+  <text x="600" y="410" text-anchor="middle" font-size="17" fill="#555">every check writes one record to output/checks_report.json; any "stop" stops the pipeline</text>
+</svg>
