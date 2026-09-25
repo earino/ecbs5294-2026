@@ -1,13 +1,7 @@
 {
  "cell_1": "f4569e0d598c2441",
- "cell_10a": "ad5ef2a0e016255b",
- "cell_10b": "8d5d871a0b9946a2",
- "cell_11": "c665180f1081c7cf",
- "cell_12": "0ce012cb2e464db5",
- "cell_13a": "e7b88f46a46451ec",
- "cell_13b": "e1509ba739a88502",
- "cell_14": "30779b9427aa5bce",
- "cell_15": "1a6da6fa678648c5",
+ "cell_10": "30779b9427aa5bce",
+ "cell_11": "1a6da6fa678648c5",
  "cell_2": "802094a17a3e676c",
  "cell_3": "41b218f65657b4bc",
  "cell_4": "6b8e41fa19971e4f",
@@ -18,7 +12,6 @@
  "cell_8a": "d4bac2a8a32c66e7",
  "cell_8b": "dbf03b4e04eed48a",
  "cell_8c": "2e54eba6bd04b686",
- "cell_9": "ab15f0c9dff0e572",
- "term_csv": "63f69330fc6e9384",
+ "cell_9": "e1509ba739a88502",
  "term_why_sql": "fb13d415c53e0ae0"
 }

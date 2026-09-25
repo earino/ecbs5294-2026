@@ -97,7 +97,7 @@ ORDER BY order_date DESC                      -- in what order
 LIMIT 10;                                     -- how many
 ```
 
-Filters: `=`, `!=`, `<`, `>=`; `AND` and `OR` with parentheses (without them, `AND` binds first);
+Filters: `=`, `!=`, `<`, `>=`; `AND` and `OR` with parentheses (without them, `AND` binds first; Block 6 shows the check it breaks);
 `IN ('a', 'b')`; `BETWEEN 1 AND 5` (both ends included); `LIKE 'A%'` (`%` is any text, `_` is one character).
 
 ```sql
@@ -149,6 +149,8 @@ A query is evaluated in this order, not in the order it is written:
 FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT
 ```
 
+`GROUP BY` and the aggregates are Block 2's; `HAVING` is Block 3's, where it finds the keys that repeat.
+
 `WHERE` filters rows before they are grouped; `HAVING` filters groups after. A condition on an aggregate can only
 live in `HAVING` (DuckDB refuses it in `WHERE`: *WHERE clause cannot contain aggregates*).
 
@@ -170,7 +172,7 @@ ORDER BY revenue DESC;
 Every column in `SELECT` is either in `GROUP BY` or inside an aggregate. DuckDB refuses the query otherwise, and that
 refusal is a help: it means the question was not precise.
 
-**A share of a total.** Divide each group's sum by the total, computed in a *scalar subquery*: a query in brackets
+**A share of a total** (Block 4). Divide each group's sum by the total, computed in a *scalar subquery*: a query in brackets
 that returns one number. The denominator must be the same population as the numerator, so the subquery repeats the
 outer query's `WHERE`, word for word:
 
@@ -206,6 +208,8 @@ the number of rows you expect: *revenue is the sum of quantity times price over 
 2010: twelve rows.* A number that violates its sentence is wrong even when the query runs.
 
 ## 5. Types: what inference did
+
+`DESCRIBE` is Block 1's; `CAST` and `TRY_CAST` are taught in Block 5, where cleaning needs them.
 
 `DESCRIBE` shows the type DuckDB chose for each column by reading the values. In Online Retail, a stock code with a
 letter in it (`85123A`) makes the whole `StockCode` column text, and an ID written with decimals (`13085.0`) comes back

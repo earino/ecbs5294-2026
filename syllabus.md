@@ -44,8 +44,8 @@ it fails out loud.
 ## Format and workload
 
 Each session runs two blocks of a 45-minute lecture plus a 45-minute hands-on lab, with a break between. Sessions 2
-and 3 open with a 10-minute closed-book knowledge check. In the lecture you predict, then watch: every query runs on the projector, and you write
-down what you expect before it does; laptops are for notes. You type in the lab — each lab's project downloads
+and 3 open with a 10-minute closed-book knowledge check. In the lecture you predict, then watch: every query is on a slide, you write down what you
+expect, and the next slide shows what it printed; laptops are for notes. You type in the lab — each lab's project downloads
 during the five-minute stretch before it. The labs are where the learning happens:
 each hands you a colleague's report that runs without an error and prints a wrong number; you find out why, write the
 query the question actually needs, add the check that would have caught it, and explain it to the person next to you.
@@ -142,9 +142,9 @@ November.
 | Session | Date | Arc | Homework |
 |---|---|---|---|
 | Setup check | before Session 1 | Clone, sync, run, commit, archive, submit — once | submit to Moodle before Session 1 |
-| 1 — What is this data? | Mon 5 Oct 2026 | Grain, keys, types, and missing values; one table in SQL | HW1 due **Fri 9 Oct, 23:59** |
-| 2 — What happens when tables meet? | Mon 12 Oct 2026 | Joins and grain; APIs and JSON into tables | HW2 due **Fri 16 Oct, 23:59** |
-| 3 — Can I trust the answer? | Mon 19 Oct 2026 | Bronze, silver, gold; validations as code; the note that goes with the number | HW3 due **Fri 30 Oct, 23:59** |
+| 1 — What is this data? | Mon 5 Oct 2026 | Grain, keys, types, and missing values; one table in SQL: rows, then groups | HW1 due **Fri 9 Oct, 23:59** |
+| 2 — What happens when tables meet? | Mon 12 Oct 2026 | Joins and grain, and finding the keys that repeat; APIs and JSON into tables, and shares of a total | HW2 due **Fri 16 Oct, 23:59** |
+| 3 — Can I trust the answer? | Mon 19 Oct 2026 | Bronze, silver, gold, and casting text safely; validations as code; the note that goes with the number | HW3 due **Fri 30 Oct, 23:59** |
 | Final exam | separate session | Closed-book, about 70 minutes | date set by the program calendar, on Moodle |
 
 Self-check keys are posted on **Sunday 11 October** (HW1), **Sunday 18 October** (HW2), and **Sunday 1 November**
