@@ -110,18 +110,19 @@ it checks whether you understood the result.
 written diagnosis note — symptom, cause, evidence, change, verification, with one entry for each data problem that
 changed a number — and a short video walkthrough in your own voice (60–90 seconds; up to two minutes for Homework 3).
 The explanation carries more weight than the fix: a right number you cannot explain loses meaningful credit; a
-partial answer with an honest diagnosis can still do well. A self-check key for each homework is posted on Moodle
-after its late window closes. Do not expect graded feedback on Homework 3 before the exam: its self-check key and the
-mock exam with its key are that feedback.
+partial answer with an honest diagnosis can still do well. Each homework is due Saturday at 23:59, with a one-day
+late window; its self-check key is posted on Moodle after the late window closes. Do not expect graded feedback on Homework 3 before
+the exam: its self-check key and the mock exam with its key are that feedback.
 
-**Labs carry no points.** A lab is complete when you have explained your work to a classmate in the last ten minutes
-of the lab and uploaded your diagnosis note to that lab's Moodle checkpoint. The checkpoint is a completion record,
-not graded work: staff read every note that asks for help, and a sample of the rest. Labs cost you preparation if
-skipped, not points.
+**Labs carry no points.** A lab is complete when your diagnosis note is on that lab's Moodle checkpoint; nobody
+signs you off. The last ten minutes of every lab are for explaining your work to a classmate, and the note's first
+line records who. The checkpoint is a completion record, not graded work: staff read every note that asks for help,
+and a sample of the rest. Labs cost you preparation if skipped, not points.
 
 **Knowledge checks** are 10-minute closed-book checks on the previous session's material. Each is 5%. One question in
-each asks you to write a short query by hand. Your marked paper comes back to you after grading, with the check's key:
-the key's model queries, scored clause by clause, are how the exam's written queries are marked. After Knowledge
+each asks you to write a short query by hand. Marked papers are at the TA office from the Monday after each check,
+and each check's key is posted on Moodle that same Monday, so you have both checks and both keys before the exam.
+The key's model queries, scored clause by clause, are how the exam's written queries are marked. After Knowledge
 check 3, everyone gets a short **retry**: one query of the same kind, posted on Moodle on Monday 19 October, answered
 by Wednesday 21 October, and returned by Friday 23 October with its model answer and one correction. The retry is
 **ungraded** and is not a make-up: it is a second attempt at the query the exam tests again.
@@ -132,7 +133,7 @@ scenarios: ten multiple-choice questions on short scenarios (40 points), four qu
 scored clause by clause (40 points), and one diagnosis note that ends with the two sentences you would send a manager
 — what the corrected number shows, and what it cannot (20 points). A mock
 exam in the same format is posted on Moodle on Monday 19 October, after Session 3, so you can sit it, check your own
-answers against the course materials, and try again; its self-check key follows with Homework 3's, on Sunday 1
+answers against the course materials, and try again; its self-check key follows with Homework 3's, on Monday 2
 November.
 
 ---
@@ -142,13 +143,13 @@ November.
 | Session | Date | Arc | Homework |
 |---|---|---|---|
 | Setup check | before Session 1 | Clone, sync, run, commit, archive, submit — once | submit to Moodle before Session 1 |
-| 1 — What is this data? | Mon 5 Oct 2026 | Grain, keys, types, and missing values; one table in SQL: rows, then groups | HW1 due **Fri 9 Oct, 23:59** |
-| 2 — What happens when tables meet? | Mon 12 Oct 2026 | Joins and grain, and finding the keys that repeat; APIs and JSON into tables, and shares of a total | HW2 due **Fri 16 Oct, 23:59** |
-| 3 — Can I trust the answer? | Mon 19 Oct 2026 | Bronze, silver, gold, and casting text safely; validations as code; the note that goes with the number | HW3 due **Fri 30 Oct, 23:59** |
+| 1 — What is this data? | Mon 5 Oct 2026 | Grain, keys, types, and missing values; one table in SQL: rows, then groups | HW1 due **Sat 10 Oct, 23:59** |
+| 2 — What happens when tables meet? | Mon 12 Oct 2026 | Joins and grain, and finding the keys that repeat; APIs and JSON into tables, and shares of a total | HW2 due **Sat 17 Oct, 23:59** |
+| 3 — Can I trust the answer? | Mon 19 Oct 2026 | Bronze, silver, gold, and casting text safely; validations as code; the note that goes with the number | HW3 due **Sat 31 Oct, 23:59** |
 | Final exam | separate session | Closed-book, about 70 minutes | date set by the program calendar, on Moodle |
 
-Self-check keys are posted on **Sunday 11 October** (HW1), **Sunday 18 October** (HW2), and **Sunday 1 November**
-(HW3, with the mock exam's key). The mock exam's questions and the ungraded Knowledge check 3 retry are posted on
+Self-check keys are posted on the morning of **Monday 12 October** (HW1), **Monday 19 October** (HW2), and **Monday 2
+November** (HW3, with the mock exam's key). The mock exam's questions and the ungraded Knowledge check 3 retry are posted on
 **Monday 19 October**, after Session 3. All deadlines are on Moodle, which is authoritative.
 
 ---
@@ -165,7 +166,7 @@ third-party data under each dataset's own license; it is for grading only.
 
 ## Policies
 
-- **Late homework:** accepted up to one day late at −10% (nothing after Saturday 23:59, so each self-check key can post on the Sunday — before Monday's knowledge check for HW1 and HW2, and with the mock exam's key for HW3).
+- **Late homework:** accepted up to one day late at −10% (nothing after Sunday 23:59, so each self-check key can post on Monday morning — before that afternoon's knowledge check for HW1 and HW2, and with the mock exam's key for HW3).
 - **Extensions:** ask before the deadline, by email, with a reason. Documented illness or emergencies are always accommodated.
 - **Missed knowledge check:** a documented absence moves that 5% to the final exam; an undocumented absence scores 0. No make-up checks.
 - **Missed lab:** do it at home that week and submit the diagnosis note to its Moodle checkpoint; say in the note if you want someone to look at it.

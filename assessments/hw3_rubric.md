@@ -12,7 +12,7 @@ geometry: margin=1in
 **ECBS5294 — Working with Data**
 
 **Deliverable:** Homework 3 — Handover: the emissions brief
-**Format:** `hw3-submission.zip` (made with `git archive` from your commits, as `SUBMITTING.md` says) and a video of up to two minutes, both uploaded to Moodle. Due date and late window: on Moodle.
+**Format:** `hw3-submission.zip` (made with `git archive` from your commits, as `SUBMITTING.md` says) and a video of up to two minutes, both uploaded to Moodle. Due Saturday 31 October 2026, 23:59; late window: one day, at −10%. Moodle is authoritative.
 **Total points:** 100
 
 ## Overview

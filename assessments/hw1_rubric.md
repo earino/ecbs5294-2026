@@ -129,4 +129,4 @@ runs; it does not know this file's conventions unless you paste them.
 - Every number must come from a query on `data/raw/online_retail.parquet`, in a cell that ran in order. A number typed
   into a markdown cell with no query behind it scores as not answered.
 - AI tools are allowed. You must be able to explain everything you submit, in your own words, without notes.
-- Late: accepted up to one day late at −10%; nothing after Saturday 23:59 (syllabus, *Policies*).
+- Late: accepted up to one day late at −10%; nothing after Sunday 23:59 (syllabus, *Policies*).

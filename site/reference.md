@@ -10,6 +10,26 @@ Every pattern this course teaches, in DuckDB 1.5.5, and nothing it does not. Eac
 on small tables with the names shown (`orders`, `order_items`, `customers`, `lines`, …); change the names to yours.
 Paths are always written from the project folder, `'data/raw/<file>'`, as every lab writes them.
 
+**If you know what you want but not what it is called:**
+
+| I want… | Write… | Section |
+|---|---|---|
+| the first character of a code (an invoice number, a series key) | `left(Invoice, 1)` | 2, *Text* |
+| the rows where a value is missing, or not missing | `WHERE col IS NULL` / `IS NOT NULL` — never `= NULL`, never `'NaN'` | 3 |
+| to know whether this column is a key | `COUNT(*)` against `COUNT(DISTINCT col)` | 1 |
+| every distinct value, with how often it occurs | the census: `GROUP BY col ORDER BY n DESC` | 1 |
+| one row per month, or per year | `date_trunc('month', ts)` / `year(ts)` in the `SELECT` and the `GROUP BY` | 4 |
+| a filter written once and reused | `CREATE OR REPLACE VIEW name AS SELECT … WHERE …` | 0 |
+| one number into a Python variable | `.fetchone()[0]` | 0 |
+| several rows, then a number from them | a `WHERE` or a query around the query, then `.fetchone()[0]` | 0 |
+| to keep the rows that match either of two things | `WHERE a OR b`; both: `AND`; mixed: parentheses | 2 |
+| a number that means "missing" turned into a label | `COALESCE(col, 'no value')` | 3 |
+| to know how many invoices, not how many lines | `COUNT(DISTINCT Invoice)` | 4 |
+| a check that two sums agree | `abs(a - b) < tolerance`, never `==` | 10 |
+| the rows a join lost | `LEFT JOIN … WHERE right.key IS NULL` | 6 |
+| the keys that repeat | `GROUP BY key HAVING COUNT(*) > 1` | 4, 6 |
+| text turned into a number without a silent `NULL` | `CAST`, then count what `TRY_CAST` swallowed | 5, 8 |
+
 The one sentence behind all of it: **no error is not the same as correct.** Say how many rows you expect before you
 run a query, count after every join and every filter, and check every number against a second computation.
 
@@ -37,6 +57,26 @@ con = duckdb.connect()                   # an in-memory database; it reads files
 ```python
 con.sql("SELECT COUNT(*) AS n FROM 'data/raw/online_retail.parquet'").df()        # a table, displayed
 n = con.sql("SELECT COUNT(*) FROM 'data/raw/online_retail.parquet'").fetchone()[0]  # one number, in Python
+```
+
+**Several rows, then a number from them.** The result you looked at has many rows and you want one figure out of
+it, or all of them added up. Ask SQL: the labs never need pandas for this.
+
+```python
+by_year = con.sql("SELECT year, SUM(co2) AS co2 FROM 'data/raw/countries.csv' GROUP BY year ORDER BY year").df()
+by_year                                                                                           # look at it
+one = con.sql("SELECT SUM(co2) FROM 'data/raw/countries.csv' WHERE year = 2024").fetchone()[0]    # one group's value
+every = con.sql("""
+    SELECT SUM(co2) FROM (SELECT year, SUM(co2) AS co2 FROM 'data/raw/countries.csv' GROUP BY year)
+""").fetchone()[0]                                                                              # every group, added up
+```
+
+The pandas route reads the dataframe you already have. It is the same numbers; the course does not require it,
+and it is one more thing to get wrong on a Tuesday:
+
+```python
+by_year.loc[by_year.year == 2024, "co2"].sum()    # one group's value
+by_year.co2.sum()                                 # every group, added up
 ```
 
 A **view** is a saved query with a name. Write a filter once, as a view, and read from the view everywhere after:
@@ -115,9 +155,33 @@ FROM lines;
 
 `SELECT DISTINCT country FROM lines;` lists each value once, without counts. Prefer the census: the counts matter.
 
+### Text: the first character, and the rest
+
+The filter Lab 2 turns on is one character of the invoice number. Every one of these was run on DuckDB 1.5.5:
+
+```sql
+SELECT left(Invoice, 1)          AS first_char,     -- '4', '5', 'C', 'A': the census of this is Lab 2's section A
+       right(Invoice, 2)         AS last_two,
+       substr(Invoice, 2, 3)     AS chars_2_to_4,   -- start at position 2, take 3
+       length(Invoice)           AS n_chars,
+       upper(Country), lower(Country), TRIM('  x  ')  AS trimmed,
+       Invoice || '-' || Country AS glued
+FROM 'data/raw/online_retail.parquet' LIMIT 1;
+```
+
+`split_part(text, ',', 2)` takes the second comma-separated piece (Block 5 unpacks Eurostat's key column with it).
+`LIKE 'C%'` (`%` is any text) also matches an invoice that starts with `C`; the course writes `left(Invoice, 1) = 'C'`,
+because a character position says what it means and a pattern does not.
+
 ## 3. `NULL`: what "missing" does to each clause
 
 `NULL` means *no value*. It is not zero and not an empty string, and it is not equal to anything, not even `NULL`.
+
+**What you see on screen.** Every result in a notebook is displayed by pandas, and pandas has its own words for a
+missing value: `NaN` in some columns, `None` in others (which one depends on what else the column holds and on the
+pandas version). Neither word is in the file, and neither is a value: `WHERE iso_code = 'NaN'` returns no rows, and
+`WHERE iso_code != 'NaN'` looks right only by accident, because every row with a missing code fails that test too.
+What pandas prints as `NaN` or `None` is SQL's `NULL`, and the only test for it is `IS NULL`.
 
 | Where | What `NULL` does |
 |---|---|

@@ -96,4 +96,4 @@ Your voice is required: a silent recording scores 0 on all four elements. Open b
 - A right number with no evidence and no identity could be right by accident. The rubric grades the query, the evidence and the check, not the number alone.
 - AI tools are allowed. You must be able to explain everything you submit, in your own words, without notes.
 - `git status` reporting a clean tree is the completeness check after a commit. An empty `git diff` alone is not: it does not see staged work or new files.
-- Late: accepted up to one day late at −10%; nothing after Saturday 23:59 (syllabus, *Policies*).
+- Late: accepted up to one day late at −10%; nothing after Sunday 23:59 (syllabus, *Policies*).
