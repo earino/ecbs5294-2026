@@ -12,16 +12,16 @@ geometry: margin=1in
 **ECBS5294 — Working with Data**
 
 **Deliverable:** Homework 2 — Many tables and an API: the board-deck numbers
-**Format:** `hw2-submission.zip` (made with `git archive` from your commits, as `SUBMITTING.md` says) and the video, both uploaded to Moodle
+**Format:** `hw2-submission.zip` (made with `git archive` from your commits, as `SUBMITTING.md` says), uploaded to Moodle
 **Total points:** 100
 
 ## Overview
 
-You receive a colleague's half-done KPI notebook for a board deck. Four KPIs are drafted and their totals disagree with the headline numbers; two are not started; `BRIEF.md` defines all six. You capture the evidence for each failure before you repair it, repair each one with a query that follows the brief, build the two new KPIs, and prove every number with the identity that kind of number allows: a sum, a ratio's numerator and denominator, or a weighted mean.
+You receive a colleague's half-done KPI notebook for a board deck. Four KPIs are drafted and their totals disagree with the headline numbers; two are not started; `BRIEF.md` defines all six. You capture the evidence for each failure before you repair it, repair each one with a query that follows the brief, build the two new KPIs, and prove every number with the identity that kind of number allows: a sum, a ratio's numerator and denominator, or a weighted mean. Every repaired or new KPI carries five parts in its markdown cell: the sentence, the rows you expected and why, the number, the check in the kind the heading names, and one line on how you would know if it were wrong. The three counts for every join live once, in section `J`, with an ID.
 
 ## How scoring works
 
-Every criterion is scored at **exactly one of its three anchor values** — no in-between points. Read each table from the bottom up: a submission that meets **any** condition in the *Needs Improvement* row scores that; otherwise, one that meets **every** condition in the *Excellent* row scores Excellent; everything else scores *Satisfactory*. So each submission meets exactly one anchor. The rule picks the anchor; judging the evidence against each condition is still a grader's call, and borderline submissions are scored by two graders. The video is scored per element.
+Every criterion is scored at **exactly one of its three anchor values** — no in-between points. Read each table from the bottom up: a submission that meets **any** condition in the *Needs Improvement* row scores that; otherwise, one that meets **every** condition in the *Excellent* row scores Excellent; everything else scores *Satisfactory*. So each submission meets exactly one anchor. The rule picks the anchor; judging the evidence against each condition is still a grader's call, and borderline submissions are scored by two graders.
 
 ## Rubric
 
@@ -35,52 +35,37 @@ Every criterion is scored at **exactly one of its three anchor values** — no i
 
 **What we're looking for:** each repair written as a query that follows the brief's definition, not a keyword changed until a total matches. A number that matches the headline by a route the brief does not describe is not the fix.
 
-### 2. Verification: the reconciliation table and the assertions (20 points)
+### 2. The checks and the "how would I know" lines (30 points)
 
 | Level | Points | Criteria |
 |---|---|---|
-| **Excellent** | 20 | All of these: the reconciliation table has **a row per KPI naming the identity that KPI allows**, each beside a number computed independently by different code: the sums (revenue in reais and in euros, item sales, revenue by seller state) add up to their totals; the average order value reconciles its numerator and its denominator separately on the same orders; the review score and the delivery time recombine with their weights; the euro-over-reais ratio is checked against the range of monthly rates **and labelled as plausibility only**. The assertions cell encodes exactly those identities — money to the cent, `abs(a - b) < 0.005`, never `==` on sums of money — plus *no order without a rate* and *no order counted twice*, and one assertion is shown failing on purpose, with its message pasted. |
-| **Satisfactory** | 13 | Neither of the other rows. For example: a KPI carries the wrong identity (an average that is summed, or recombined without its weights); an "independent" number reruns the KPI's own query; money is compared with `==`; one of the two named assertions is missing; no assertion was shown to fail. |
-| **Needs Improvement** | 5 | Any of these: no reconciliation table; no assertions cell; or no assertion in it can fail (a table compared with itself, `assert n > 0`). |
+| **Excellent** | 30 | All of these: the reconciliation table has **a row per KPI naming the identity that KPI allows**, each beside a number computed independently by different code: the sums (revenue in reais and in euros, item sales, revenue by seller state) add up to their totals; the average order value reconciles its numerator and its denominator separately on the same orders; the review score and the delivery time recombine with their weights; the euro-over-reais ratio is checked against the range of monthly rates **and labelled as plausibility only**. The assertions cell encodes exactly those identities — money to the cent, `abs(a - b) < 0.005`, never `==` on sums of money — plus *no order without a rate* and *no order counted twice*; one assertion is shown failing on purpose, with its message pasted under `F`. Section `J` has **the three counts** — rows in the left table, rows in the result, distinct left keys in the result — **for every join in the submission**, each with an ID. Every KPI's check line names its row of `D` and its join IDs, and every KPI's **how-would-I-know line** names the number that would move, which way, and the cause as what the join did to the grain (or which rows found no match), citing the section A cell and the join ID that showed it — never the change. Every cited ID exists and shows what the line says. |
+| **Satisfactory** | 20 | Neither of the other rows. For example: a KPI carries the wrong identity (an average that is summed, or recombined without its weights); an "independent" number reruns the KPI's own query; money is compared with `==`; one of the two named assertions is missing; no assertion was shown to fail; the three counts missing for some joins; one or two how-would-I-know lines that give the change as the cause ("I added DISTINCT") or cite nothing; a cited ID that does not exist, or does not show what the line says. |
+| **Needs Improvement** | 8 | Any of these: no reconciliation table; no assertions cell, or none of its assertions can fail (a table compared with itself, `assert n > 0`); no three counts for any join; three or more how-would-I-know lines missing or giving the change as the cause; evidence that no query you ran produces. |
 
-**What we're looking for:** the right identity for each kind of number. Averages do not add up, and the average of averages is not the average. The range bound is a plausibility check; it cannot prove a conversion right.
+**What we're looking for:** the right identity for each kind of number, and a cause a colleague could check, from evidence you actually ran. Averages do not add up, and the average of averages is not the average. The range bound is a plausibility check; it cannot prove a conversion right. A join count for every join, written once and cited by ID, because the row count is where a join shows what it did.
 
-### 3. Diagnosis notes and the three counts for every join (20 points)
-
-| Level | Points | Criteria |
-|---|---|---|
-| **Excellent** | 20 | All of these: one five-part note per failure (four), each cause stated as what the query did to the grain (or which rows found no match), each supported by evidence from *before* the repair — section A's cells and the joins, cited by ID with the line that shows the cause — and each verification naming its row of `D` and its assertion in `E`, with the message from the one assertion made to fail pasted in that KPI's note; a **Joins** section with **the three counts** — rows in the left table, rows in the result, distinct left keys in the result — **for every join in the submission**, each with an ID; every cited ID exists and shows what the note says; a trap log with the data issues that changed a number; the README's **Results** section says what the numbers show, what was excluded, and one thing the data **cannot answer**, stated as a fact about the data ("no cost data, so no margin"), not as a hedge. |
-| **Satisfactory** | 13 | Neither of the other rows. For example: one or two notes whose cause restates the change ("I added DISTINCT") or that have no evidence; the three counts missing for some joins; a cited ID that does not exist, or does not show what the note says; no trap log; no "cannot answer" line, or one that is a hedge ("more research is needed"). |
-| **Needs Improvement** | 5 | Any of these: three or more of the four notes give the change as the cause, or have no evidence; no three counts for any join; evidence that no query you ran produces. |
-
-**What we're looking for:** a cause a colleague could check, from evidence you actually ran, and a join count for every join, written once in the Joins section and cited by ID, because the row count is where a join shows what it did. Pasting the same counts into several places earns nothing.
-
-### 4. Video walkthrough (15 points)
-
-Scored per element: **full**, **half** (vague or wrong), or **0** (absent). The video takes **one** failure of your choice, explained in full; nothing is asked or scored about the other three, which are in your notes.
-
-| Element | Full | Half | What earns full |
-|---|---|---|---|
-| Symptom | 3 | 1 | The chosen failure's two numbers that should agree and did not |
-| Cause | 5 | 2 | Why the number was wrong — the grain of the join's result, or the rows with no match — not only where |
-| Change | 3 | 1 | The query as it is now, and why it follows the brief |
-| Verification | 4 | 2 | The notebook after *Restart* and *Run All* with the assertions passing, and the identity that now holds, with both of its numbers |
-
-Your voice is required: a silent recording scores 0 on all four elements. Open by naming the homework and the repo; a missed name is a clean-submission matter (criterion 5), not a video one. 60–90 seconds. Excellent / Satisfactory / Needs Improvement map to 13–15 / 8–12 / 0–7.
-
-*Approved alternative formats* (see the syllabus's accessibility section — arrange in advance): a written walkthrough with annotated screenshots, or an audio-only recording, is scored on the same four elements at the same values. The "your voice" requirement applies to the standard video route only, never to an arranged accommodation.
-
-### 5. Clean submission and Git (10 points)
+### 3. The sentences and the sourced estimates, and the Results section (25 points)
 
 | Level | Points | Criteria |
 |---|---|---|
-| **Excellent** | 10 | All of these: `GIT_LOG.txt` shows a commit after each repair, with messages that name the cause, and **every commit that changes a join cites the join's ID** (its three counts live in the Joins section, not in the message); `git status` was clean at the end; the archive contains what `SUBMITTING.md` lists and nothing it forbids; the video opens by naming the homework and the repo. |
-| **Satisfactory** | 6 | Neither of the other rows. For example: messages are "fix" or "update"; a join commit cites no join ID; one required file other than `GIT_LOG.txt` is missing from the archive; the video does not open with the names. |
+| **Excellent** | 25 | All of these: every repaired and new KPI has a sentence in plain English that says what the number measures, which rows it comes from, and which rows the query left out, in the brief's terms; every one has the rows expected written **before** the query ran, with its source — the brief, a section A cell by ID, or "neither fixes this" — and a word on whether the file agreed; the README's **Results** section says what the six numbers show, what was excluded and why, and **one thing the data cannot answer**, stated as a fact about the data ("no cost data, so no margin"), not as a hedge, citing joins by ID where a sentence rests on one and copying no counts. |
+| **Satisfactory** | 17 | Neither of the other rows. For example: one or two sentences that restate the KPI's name instead of naming the rows; an estimate with no source, or written after the fact; a Results section with no "cannot answer" line, or one that is a hedge ("more research is needed"), or that pastes join counts. |
+| **Needs Improvement** | 6 | Any of these: three or more KPIs with no sentence or no estimate; no Results section; a sentence or estimate invented after the number ("I expected 26" with nothing behind it, on three or more KPIs). |
+
+**What we're looking for:** that the number was understood before it was computed. A sentence that names the rows left out is the one that catches a join that kept too many or too few, and an estimate with a source is the one that catches a count that doubled.
+
+### 4. Clean submission and Git (10 points)
+
+| Level | Points | Criteria |
+|---|---|---|
+| **Excellent** | 10 | All of these: `GIT_LOG.txt` shows a commit after each repair, with messages that name the cause, and **every commit that changes a join cites the join's ID** (its three counts live in section `J`, not in the message); `git status` was clean at the end; the archive contains what `SUBMITTING.md` lists and nothing it forbids. |
+| **Satisfactory** | 6 | Neither of the other rows. For example: messages are "fix" or "update"; a join commit cites no join ID; one required file other than `GIT_LOG.txt` is missing from the archive. |
 | **Needs Improvement** | 2 | Any of these: one commit only; no `GIT_LOG.txt`; two or more required files missing from the archive; `.venv/` in the archive; `data/raw/` edited. |
 
 **What we're looking for:** a history a colleague can read, and an archive that runs from a fresh unzip.
 
-### 6. AI use disclosure (5 points)
+### 5. AI use disclosure (5 points)
 
 | Level | Points | Criteria |
 |---|---|---|
@@ -92,7 +77,7 @@ Your voice is required: a silent recording scores 0 on all four elements. Open b
 
 ## General Notes
 
-- The notes and the video together (35 points) outweigh the fixes (30). A notebook you cannot explain loses meaningful credit; a partial repair with clear evidence and an honest note can still do well.
+- The checks, the how-would-I-know lines, the sentences and the estimates together (55 points) outweigh the fixes (30). A notebook you cannot explain loses meaningful credit; a partial repair with clear evidence and an honest line on what would have broken it can still do well.
 - A right number with no evidence and no identity could be right by accident. The rubric grades the query, the evidence and the check, not the number alone.
 - AI tools are allowed. You must be able to explain everything you submit, in your own words, without notes.
 - `git status` reporting a clean tree is the completeness check after a commit. An empty `git diff` alone is not: it does not see staged work or new files.

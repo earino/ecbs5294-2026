@@ -60,8 +60,8 @@ it to aggregate a measure to its own grain before a join.
 **Data dictionary** — a document that says, for every column of a table: its type, its meaning, its unit, its allowed
 values, what a missing value means, and what cleaning did to it.
 
-**Diagnosis note** — the five-part note every lab and homework ends with: symptom, cause, evidence, change,
-verification. In the homeworks it includes a *trap log*.
+**Diagnosis note** — the five-part note every lab ends with: symptom, cause, evidence, change, verification. The
+final exam asks for one. In the homeworks the reasoning lives in the notebook instead: see *The five parts*.
 
 **Dimension** — a column you group by or filter on (state, month, payment type), as opposed to a *measure*.
 
@@ -193,8 +193,12 @@ in the result. Together they say whether the join multiplied rows or dropped the
 **Tolerance** — how close two numbers must be to count as agreeing: to the cent for money, to the source's rounding
 for tonnes and people.
 
-**Trap log** — in a homework's diagnosis note, one entry for each problem in the data that changed a number, even if
-your own query was never wrong.
+**The five parts** — how every homework question is answered, inside the notebook: the sentence (what the number
+measures, which rows it comes from, which rows the query left out), the row estimate with its source, the query and
+the number, the check in the kind the question names, and one line on how you would know if the number were wrong.
+
+**Three kinds of check** — a sum splits into groups that add back up; a ranked list gets its row count and its top
+row reached a second way; a ratio gets its top and its bottom checked separately, on the same lines.
 
 **`TRY_CAST`** — converts a value to another type and returns `NULL`, silently, when it cannot. Every `TRY_CAST` needs
 a count of what it turned into nothing.

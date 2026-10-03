@@ -106,10 +106,11 @@ it checks whether you understood the result.
 | Knowledge check 3 (start of Session 3, closed-book) | 5% |
 | Final exam (closed-book, in person, separate session) | 50% |
 
-**Homework** is a larger lab, graded against a rubric published with each assignment. Every submission includes a
-written diagnosis note — symptom, cause, evidence, change, verification, with one entry for each data problem that
-changed a number — and a short video walkthrough in your own voice (60–90 seconds; up to two minutes for Homework 3).
-The explanation carries more weight than the fix: a right number you cannot explain loses meaningful credit; a
+**Homework** is a larger lab, graded against a rubric published with each assignment. Every question is answered in
+five parts, inside the notebook: the sentence (what the number measures, which rows it comes from, which rows the
+query left out), the row estimate with its source, the query and the number, the check in the kind the question
+names (a sum, a ranked list, a ratio), and one line on how you would know if the number were wrong. Homework 3, a
+pipeline, carries those lines in its note. The explanation carries more weight than the fix: a right number you cannot explain loses meaningful credit; a
 partial answer with an honest diagnosis can still do well. Each homework is due Saturday at 23:59, with a one-day
 late window; its self-check key is posted on Moodle after the late window closes. Do not expect graded feedback on Homework 3 before
 the exam: its self-check key and the mock exam with its key are that feedback.
@@ -158,7 +159,7 @@ November** (HW3, with the mock exam's key). The mock exam's questions and the un
 
 Everything is submitted through **Moodle**; nothing is graded from GitHub. You clone each lab and homework from a
 public starter repository and work locally; each homework's `SUBMITTING.md` gives the exact commands — commit, write
-`GIT_LOG.txt`, make the zip with `git archive` — and you upload the zip and your video. Submissions must run as
+`GIT_LOG.txt`, make the zip with `git archive` — and you upload the zip. Submissions must run as
 instructed from a fresh unzip and contain nothing you cannot explain. The zip carries the course's copy of
 third-party data under each dataset's own license; it is for grading only.
 
@@ -180,6 +181,5 @@ third-party data under each dataset's own license; it is for grading only.
 
 CEU academic integrity and accessibility policies apply; contact me and the relevant university office early if you
 need accommodations. If speaking aloud is a barrier, the end-of-lab explanation can be written for your partner to
-read, and homework videos can be completed in writing or by audio with the same content requirements — arrange it
-with me in advance. Accessible-format exam papers are available on request per your CEU accommodation letter; ask at
+read — arrange it with me in advance. Accessible-format exam papers are available on request per your CEU accommodation letter; ask at
 least a week ahead.
