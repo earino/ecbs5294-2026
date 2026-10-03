@@ -1,6 +1,6 @@
 # Working with Data
 
-> ⚠️ PRE-RELEASE — the course materials are being finalised and may change before Session 1 on Monday 5 October.
+> ⚠️ Session 1 (Monday 5 October) is final. Sessions 2 and 3 are still being finalised and may change before their Mondays, 12 and 19 October.
 
 **ECBS5294** · Central European University · 2026–2027
 
