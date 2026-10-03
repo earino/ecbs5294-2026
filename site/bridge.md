@@ -141,5 +141,5 @@ Run the [setup check](setup.html) and submit it. In the Moodle text box, say **w
 how long setup took you**, and name any exercise above that did not behave as described: that is exactly what we need
 to know before Session 1.
 
-If you did not take DS1, or setup failed or took you more than an hour, **book a supported 30-minute rehearsal with a TA** in the week of 28 September, on Moodle. You run the path once more with someone beside you, so that Session 1's lab is
+If you did not take DS1, or setup failed or took you more than an hour, **book a supported 30-minute rehearsal with a TA** in the week before Session 1, on Moodle. You run the path once more with someone beside you, so that Session 1's lab is
 about the data, not the tools. Book it as early as you can: the slots are in the week before Session 1.

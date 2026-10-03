@@ -73,7 +73,7 @@ the Moodle "Setup verification" slot. It walks the whole path once — clone, sy
 assumes, each with the DS1 page that teaches it and a short exercise. Do it before Session 1. The exercises are
 practice; the setup check is the evidence. When you submit the setup check, say in the Moodle text box whether you
 took DS1 and roughly how long setup took you. If you did not take DS1, or setup failed or took you more than an hour,
-book a supported 30-minute rehearsal with a TA in the week of 28 September, on Moodle. The [Glossary](site/glossary.html) defines every term used here, and the
+book a supported 30-minute rehearsal with a TA in the week before Session 1, on Moodle. The [Glossary](site/glossary.html) defines every term used here, and the
 [SQL and pipeline reference](site/reference.html) has every query pattern the course teaches.
 
 ---
