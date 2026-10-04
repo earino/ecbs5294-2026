@@ -11,6 +11,10 @@ its files in `data/raw/`, committed on purpose and never edited, with a `DATA.md
 the date it was fetched, its license and attribution, and what was changed for the course (a subset, a format). The
 repository's `LICENSE.md` lists each dataset's license. This page is the catalogue.
 
+**The names of places are the publishers'.** The country names, area names and codes in these files are the ones their
+publishers use. Their use in this course says nothing about the political status of any place. In the labs, *country*
+is the file's word: see the [glossary](glossary.html).
+
 What a file *does* — which rows are not what they claim to be, what "missing" looks like in it — is not written here.
 Finding it is the work, and the census is how.
 

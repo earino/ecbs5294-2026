@@ -51,6 +51,11 @@ All of it, never the top few. It is the first thing you run on a column you have
 **Composite key** — a key made of more than one column, such as `(country, year)`: no single column is unique, but
 the combination is.
 
+**Country** — in this course, the file's word, not a political one. A `country` or `geo` column holds whatever its
+publisher reports there: states, territories, places with no government at all (Antarctica), and often groups (`World`,
+the EU). When a lab says *country*, it means a row for one place, as opposed to a group of places. The word says
+nothing about what any place is politically, and no question in this course asks.
+
 **`COUNT(*)` and `COUNT(column)`** — `COUNT(*)` counts rows; `COUNT(column)` counts the rows where that column has a
 value. The difference between them is the number of `NULL`s.
 
