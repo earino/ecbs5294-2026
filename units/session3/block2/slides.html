@@ -109,7 +109,7 @@
 <li>A join did not change the left table's row count (Session 2's discipline, as code)</li>
 <li>No period is missing from a series: <code>GROUP BY</code> shows only groups that exist, <strong>so a gap is silent</strong></li>
 </ul>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">year</span>, <span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">value</span>) <span class="hljs-keyword">AS</span> countries_with_a_value
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">year</span>, <span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">value</span>) <span class="hljs-keyword">AS</span> places_with_a_value
 <span class="hljs-keyword">FROM</span> <span class="hljs-string">&#x27;data/silver/waste.parquet&#x27;</span>
 <span class="hljs-keyword">WHERE</span> wst_oper <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;GEN&#x27;</span> <span class="hljs-keyword">AND</span> <span class="hljs-keyword">NOT</span> is_aggregate
 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">year</span> <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">year</span>        <span class="hljs-comment">-- a year with no rows would not appear at all</span>
@@ -388,7 +388,7 @@ uv run python pipeline.py
 <header>ECBS5294 · Session 3</header>
 <h2 id="a-note-for-lab-5s-gold">A note, for Lab 5's gold</h2>
 <blockquote>
-<p>Municipal waste generated per person in 2024, in kilograms, by country, from Eurostat's <code>env_wasmun</code>. 25 of the 37 countries in the file report a 2024 value; 12 do not, among them Austria, Italy and Ireland. 10 of the 25 values carry a Eurostat flag — 4 estimated, 3 provisional, 1 both, 1 imputed, 1 a break in the series — and the table shows the flag beside each. The EU as a whole, 517 kg (imputed by Eurostat), is reported apart from the countries. All 11,130 observations in the file are accounted for: none rejected, 5,565 in thousand tonnes excluded, 135 for the EU, 5,430 kept. This cannot tell you whether Sweden's figure changed because of what people threw away or because of how it was counted, because the file marks a break in the series but does not describe it.</p>
+<p>Municipal waste generated per person in 2024, in kilograms, by place, from Eurostat's <code>env_wasmun</code>. 25 of the 37 places in the file report a 2024 value; 12 do not, among them Austria, Italy and Ireland. 10 of the 25 values carry a Eurostat flag — 4 estimated, 3 provisional, 1 both, 1 imputed, 1 a break in the series — and the table shows the flag beside each. The EU as a whole, 517 kg (imputed by Eurostat), is reported apart from them. All 11,130 observations in the file are accounted for: none rejected, 5,565 in thousand tonnes excluded, 135 for the EU, 5,430 kept. This cannot tell you whether Sweden's figure changed because of what people threw away or because of how it was counted, because the file marks a break in the series but does not describe it.</p>
 </blockquote>
 <footer>Block 6 — Validations as code, and the note that goes with the number</footer>
 </section>
@@ -450,7 +450,7 @@ uv run python pipeline.py
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="ECBS5294 · Session 3" data-footer="Block 6 — Validations as code, and the note that goes with the number" data-lang="en" data-theme="course" lang="en" data-marpit-pagination="32" style="--paginate:true;--header:ECBS5294 · Session 3;--footer:Block 6 — Validations as code, and the note that goes with the number;--lang:en;--theme:course;" data-marpit-pagination-total="34">
 <header>ECBS5294 · Session 3</header>
 <h2 id="5-minute-stand-and-stretch--start-the-clone-first">5-minute stand-and-stretch — start the clone first</h2>
-<p>In the <strong>terminal</strong> (Git Bash on Windows, Terminal on macOS), in your course folder, then stand up:</p>
+<p>In the <strong>terminal</strong> (Git Bash on Windows, Terminal on macOS), in your course folder, then take your break:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/earino/ecbs5294-lab06-validations.git
 <span class="hljs-built_in">cd</span> ecbs5294-lab06-validations
 uv <span class="hljs-built_in">sync</span>

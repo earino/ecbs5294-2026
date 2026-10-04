@@ -63,7 +63,7 @@
 <h2 id="the-lecture-file-one-row-is-one-country-in-one-year">The lecture file: one row is one country in one year</h2>
 <p><strong>Watch</strong> (cell 1 of <code>lecture.ipynb</code>): Block 1's key test, on the lecture file.</p>
 <p><img src="images/cell_1.png" alt="" style="width:932px;" /></p>
-<p>219 countries, 1990 to 2024. One row per country per year?</p>
+<p>219 countries, in the file's sense, 1990 to 2024. One row per country per year?</p>
 <footer>Block 2 — One table, one question: SQL on DuckDB</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="ECBS5294 · Session 1" data-footer="Block 2 — One table, one question: SQL on DuckDB" data-lang="en" data-theme="course" lang="en" data-marpit-pagination="7" style="--paginate:true;--header:ECBS5294 · Session 1;--footer:Block 2 — One table, one question: SQL on DuckDB;--lang:en;--theme:course;" data-marpit-pagination-total="35">
@@ -251,7 +251,7 @@
 <header>ECBS5294 · Session 1</header>
 <h2 id="what-you-just-saw-as-one-idea">What you just saw, as one idea</h2>
 <p><strong>A filter that sounds right can throw away rows the sentence keeps.</strong><br />
-<code>WHERE gdp &gt; 1e12</code> keeps 26 countries and <code>WHERE gdp &lt;= 1e12</code> keeps 138; the 55 with no GDP are in neither. <code>GROUP BY</code> showed them; <code>WHERE</code> would not have.</p>
+<code>WHERE gdp &gt; 1e12</code> keeps 26 countries and <code>WHERE gdp &lt;= 1e12</code> keeps 138; the 55 with no GDP figure are in neither. <code>GROUP BY</code> showed them; <code>WHERE</code> would not have.</p>
 <p><strong>A ratio can be built from two different populations.</strong><br />
 <code>SUM(gdp) / COUNT(*)</code> is a top from 164 countries over a bottom of 219: 595 billion, the same wrong number as counting the missing as zero.</p>
 <p>No error in either. The sentence says what the number counts; the query must do all of it, and only it. <strong>The check finds them.</strong></p>
@@ -260,7 +260,7 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="ECBS5294 · Session 1" data-footer="Block 2 — One table, one question: SQL on DuckDB" data-lang="en" data-theme="course" lang="en" data-marpit-pagination="29" style="--paginate:true;--header:ECBS5294 · Session 1;--footer:Block 2 — One table, one question: SQL on DuckDB;--lang:en;--theme:course;" data-marpit-pagination-total="35">
 <header>ECBS5294 · Session 1</header>
 <h2 id="git-thread--the-message-names-the-cause">Git thread — the message names the cause</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git commit -m <span class="hljs-string">&quot;Keep countries with no GDP in the breakdown: gdp &lt;= 1e12 dropped 55 NULL rows&quot;</span>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git commit -m <span class="hljs-string">&quot;Keep countries with no GDP figure in the breakdown: gdp &lt;= 1e12 dropped 55 NULL rows&quot;</span>
 </code></pre>
 <p>not <code>git commit -m &quot;fix&quot;</code>. Commit after each fix. Six months from now, <code>git log --oneline</code> is the only diagnosis note anyone will read.</p>
 <footer>Block 2 — One table, one question: SQL on DuckDB</footer>
@@ -281,7 +281,7 @@
 <span class="hljs-built_in">cd</span> ecbs5294-lab02-one-table
 uv <span class="hljs-built_in">sync</span>
 </code></pre>
-<p>Start it, then stand up: it downloads while you stretch.</p>
+<p>Start it, then take your break: it downloads while you are away.</p>
 <footer>Block 2 — One table, one question: SQL on DuckDB</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="ECBS5294 · Session 1" data-footer="Block 2 — One table, one question: SQL on DuckDB" data-lang="en" data-theme="course" lang="en" data-marpit-pagination="32" style="--paginate:true;--header:ECBS5294 · Session 1;--footer:Block 2 — One table, one question: SQL on DuckDB;--lang:en;--theme:course;" data-marpit-pagination-total="35">

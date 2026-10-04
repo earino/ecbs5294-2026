@@ -181,7 +181,7 @@ n_keys    512,126
     ORDER BY n DESC
 &quot;&quot;&quot;</span>).df()
 </code></pre>
-<p>Predict: is every value of <code>Country</code> a country? Then read all of them, to the end.</p>
+<p>Predict: would every value of <code>Country</code> match a name in a standard list of countries? Then read all of them, to the end.</p>
 <footer>Block 1 — Tables, grain, keys, types, and missing values</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-header="ECBS5294 · Session 1" data-footer="Block 1 — Tables, grain, keys, types, and missing values" data-lang="en" data-theme="course" lang="en" data-marpit-pagination="15" style="--paginate:true;--header:ECBS5294 · Session 1;--footer:Block 1 — Tables, grain, keys, types, and missing values;--lang:en;--theme:course;" data-marpit-pagination-total="39">
@@ -435,7 +435,7 @@ con.sql(<span class="hljs-string">&quot;&quot;&quot;
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-header="ECBS5294 · Session 1" data-footer="Block 1 — Tables, grain, keys, types, and missing values" data-lang="en" data-theme="course" lang="en" data-marpit-pagination="37" style="--paginate:true;--header:ECBS5294 · Session 1;--footer:Block 1 — Tables, grain, keys, types, and missing values;--lang:en;--theme:course;" data-marpit-pagination-total="39">
 <header>ECBS5294 · Session 1</header>
 <h2 id="5-minute-stand-and-stretch--start-the-clone-first">5-minute stand-and-stretch — start the clone first</h2>
-<p>In your terminal (Git Bash on Windows, Terminal on macOS), in your course folder, <strong>then stand up</strong>:</p>
+<p>In your terminal (Git Bash on Windows, Terminal on macOS), in your course folder, <strong>then take your break</strong>:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/earino/ecbs5294-lab01-grain.git
 <span class="hljs-built_in">cd</span> ecbs5294-lab01-grain
 uv <span class="hljs-built_in">sync</span>
@@ -448,7 +448,7 @@ uv <span class="hljs-built_in">sync</span>
 <h2 id="lab-1--the-planet-that-emits-six-times-too-much">Lab 1 — The planet that emits six times too much</h2>
 <p><strong>The file:</strong> <code>data/raw/owid_co2.csv</code> — Our World in Data, every country, every year. The codebook: <code>data/raw/owid_codebook.csv</code>.</p>
 <p><strong>The symptom:</strong> the notebook's report runs without an error and says the world emitted about <strong>245,700 Mt</strong> of CO₂ in 2024, China's share was <strong>5%</strong>, and <strong>254</strong> countries reported. The file has its own figure for the whole world — a row called <code>World</code> — and it disagrees.</p>
-<p><strong>Your work</strong>, in the notebook, top to bottom. <strong>A:</strong> run the four inspection recipes on the file and read what they return. <strong>B:</strong> write the filter as a view, <code>countries</code>, and its opposite, <code>not_countries</code>; read what you excluded; a supplied check proves the two views split the file. <strong>C:</strong> the ten largest emitting countries, from an empty cell. <strong>D:</strong> a supplied check puts the <code>World</code> row beside the sum over your view; what it leaves over must be rounding, and if it is not, your filter is wrong. <strong>E:</strong> the corrected report. Then <code>DIAGNOSIS.md</code>. Neighbour at minute 33. Checkpoint on Moodle. Syntax: <code>REFERENCE-sql.md</code> in the project; the full reference is on the course site.</p>
+<p><strong>Your work</strong>, in the notebook, top to bottom. <strong>A:</strong> run the four inspection recipes on the file and read what they return. <strong>B:</strong> write the filter as a view, <code>countries</code>, and its opposite, <code>excluded</code>; read what you excluded; a supplied check proves the two views split the file. <strong>C:</strong> the ten largest emitting countries, from an empty cell. <strong>D:</strong> a supplied check puts the <code>World</code> row beside the sum over your view; what it leaves over must be rounding, and if it is not, your filter is wrong. <strong>E:</strong> the corrected report. Then <code>DIAGNOSIS.md</code>. Neighbour at minute 33. Checkpoint on Moodle. Syntax: <code>REFERENCE-sql.md</code> in the project; the full reference is on the course site.</p>
 <footer>Block 1 — Tables, grain, keys, types, and missing values</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-header="ECBS5294 · Session 1" data-footer="Block 1 — Tables, grain, keys, types, and missing values" data-lang="en" data-theme="course" lang="en" data-marpit-pagination="39" style="--paginate:true;--header:ECBS5294 · Session 1;--footer:Block 1 — Tables, grain, keys, types, and missing values;--lang:en;--theme:course;" data-marpit-pagination-total="39">
