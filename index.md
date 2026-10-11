@@ -7,7 +7,7 @@ nav_order: 1
 
 # Working with Data
 
-> ⚠️ Session 1 (Monday 5 October) is final. Sessions 2 and 3 are still being finalised and may change before their Mondays, 12 and 19 October.
+> ⚠️ Sessions 1 and 2 are final. Session 3 (Monday 19 October) is being rebuilt and is not ready yet; its materials will appear here when they are.
 
 **ECBS5294** · Central European University · MSBA · 2026–2027
 
@@ -25,7 +25,8 @@ Three sessions, one question each: **What is this data? · What happens when tab
 SQL on DuckDB is the language, and the data is real: a UK online retailer's half-million invoice lines, a Brazilian
 marketplace's orders, the world's emissions by country and by sector, and two public APIs, cached for the room. Every
 lab hands you a colleague's report that runs without an error and prints a wrong number. You find out why, write the
-query the question actually needs, add the check that would have caught it, and explain it to the person next to you.
+query the question actually needs, run the check that would have caught it, and explain it to classmates. From
+Session 2 the labs are done in teams of three, on one laptop, each of you with a role: keyboard, AI, checker.
 
 Before Session 1: the setup check, on the [Pre-course setup](site/setup.html) page. Did not take DS1? Start with the
 [Bridge from DS1](site/bridge.html).
@@ -36,6 +37,6 @@ Before Session 1: the setup check, on the [Pre-course setup](site/setup.html) pa
 |:---:|:---|:---:|:---:|
 | 1 | [Session 1 — What is this data?](site/session1.html) | Mon 5 Oct 2026 | Released |
 | 2 | [Session 2 — What happens when tables meet?](site/session2.html) | Mon 12 Oct 2026 | Released |
-| 3 | [Session 3 — Can I trust the answer?](site/session3.html) | Mon 19 Oct 2026 | Released |
+| 3 | Session 3 — Can I trust the answer? | Mon 19 Oct 2026 | — |
 
 See the [Syllabus](syllabus.html) for assessment, policies, and setup.

@@ -1,6 +1,6 @@
 # Working with Data
 
-> ⚠️ Session 1 (Monday 5 October) is final. Sessions 2 and 3 are still being finalised and may change before their Mondays, 12 and 19 October.
+> ⚠️ Sessions 1 and 2 are final. Session 3 (Monday 19 October) is being rebuilt and is not ready yet; its materials will appear here when they are.
 
 **ECBS5294** · Central European University · 2026–2027
 

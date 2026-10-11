@@ -46,7 +46,7 @@ Finding it is the work, and the census is how.
 | **Source** | Olist, [*Brazilian E-Commerce Public Dataset by Olist*](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), Kaggle. |
 | **License** | **CC BY-NC-SA 4.0.** NonCommercial: redistributed here for teaching only. ShareAlike: the subset is an adaptation, shared under the same license. The course's own code and text are not relicensed by it. |
 | **As shipped** | A **selected** subset, not a representative one: 2,653 of the 99,441 orders, chosen so that the situations the labs are about are present, with every item, payment, and review of those orders and every customer, product, and seller they refer to. The selection rule is in `DATA.md`. `orders` 2,653 rows · `order_items` 3,024 · `order_payments` 2,790 · `order_reviews` 2,681 · `customers` 2,653 · `products` 2,217 · `sellers` 903 · `product_category_name_translation` 71. |
-| **Used in** | the Block 3 lecture and Lab 3; Lab 4 (orders and payments); Lab 6; Homework 2; Knowledge check 3 and its ungraded retry, which quote small, unchanged extracts. |
+| **Used in** | the Block 3 and Block 4 lectures; Lab 3 (items, products and category names); Lab 4 (orders and payments); Homework 2 (orders, payments, customers and reviews); Lab 6; Knowledge check 3 and its ungraded retry, which quote small, unchanged extracts. |
 
 ## Eurostat — municipal waste (`env_wasmun`)
 
@@ -76,7 +76,7 @@ Finding it is the work, and the census is how.
 | **Source** | The [Frankfurter API](https://frankfurter.dev), which serves the European Central Bank's euro foreign exchange reference rates. The request is written in `DATA.md`. |
 | **License** | ECB statistics may be reused with the source acknowledged: *Source: European Central Bank*. The Frankfurter API is open source (MIT). |
 | **As shipped** | `api/frankfurter_eur.json`: the response exactly as received — one JSON document with rates for 555 dates. The ECB publishes on its business days only. |
-| **Used in** | Lab 4; Homework 2. |
+| **Used in** | Session 3 (being rebuilt). It is no longer part of Session 2. |
 
 ## World Bank — World Development Indicators
 
@@ -86,7 +86,7 @@ Finding it is the work, and the census is how.
 | **Source** | World Bank Indicators API v2, [api.worldbank.org](https://api.worldbank.org/v2). The requests are written in `DATA.md`. |
 | **License** | CC BY 4.0. Attribution: *World Bank, World Development Indicators*. |
 | **As shipped** | Each API response exactly as received, one file per page, under `api/worldbank/`: four pages per indicator (3,975 records each), and one page of country metadata (295 entries). |
-| **Used in** | the Block 4 lecture (population and the country list, in the Lab 4 project); Homework 3 (both indicators). |
+| **Used in** | Session 3 (being rebuilt); Homework 3 (both indicators). It is no longer part of Session 2. |
 
 ## EU-27 country codes
 

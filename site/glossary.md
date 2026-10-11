@@ -23,13 +23,14 @@ The census is how you find them.
 The name is born in `SELECT`, which runs after `WHERE`, so standard SQL does not let `WHERE` use it. DuckDB does, as a
 shortcut; the course writes the expression again, so the query means the same in any database.
 
-**Anti-join** — a query that finds the rows of one table with **no** match in another: a `LEFT JOIN` followed by
-`WHERE right_table.key IS NULL`. It shows you what an `INNER JOIN` would have thrown away.
+**Anti-join** — the usual name for the query the course calls *the rows with no partner*: a `LEFT JOIN` followed by
+`WHERE right_table.key IS NULL`. It finds the rows of one table that match nothing in another, which are the rows a
+plain `JOIN` leaves out.
 
 **API** — a web address that returns data instead of a page. You send a request (often with parameters in the
 address) and get back a document, usually JSON.
 
-**Assertion** — a line of code that stops the program if a condition is false: `assert duplicates == 0, f"{duplicates} duplicate keys"`. The course's checks are assertions.
+**Assertion** — a line of code that stops the program if a condition is false: `assert duplicates == 0, f"{duplicates} duplicate keys"`. A pipeline's checks are assertions (Session 3). A check in a lab notebook may print its comparison instead, for you to read.
 
 **Base (of a rate)** — the currency a set of exchange rates is quoted against, stated in the response itself. It
 decides which way every rate points: write the unit down (*… per …*) before you multiply or divide by it.
@@ -65,8 +66,9 @@ it to aggregate a measure to its own grain before a join.
 **Data dictionary** — a document that says, for every column of a table: its type, its meaning, its unit, its allowed
 values, what a missing value means, and what cleaning did to it.
 
-**Diagnosis note** — the five-part note every lab ends with: symptom, cause, evidence, change, verification. The
-final exam asks for one. In the homeworks the reasoning lives in the notebook instead: see *The five parts*.
+**Diagnosis note** — the note Session 1's labs ended with, in five parts: symptom, cause, evidence, change,
+verification. From Session 2 there is no note: the cause is one comment in the notebook's repair cell, and the checks
+print the evidence. The final exam asks for one. In the homeworks the reasoning lives in the notebook: see *The four pieces*.
 
 **Dimension** — a column you group by or filter on (state, month, payment type), as opposed to a *measure*.
 
@@ -75,8 +77,10 @@ final exam asks for one. In the homeworks the reasoning lives in the notebook in
 **DuckDB** — the database this course uses. It runs inside Python with no server, and reads a CSV, Parquet, or JSON
 file as a table with no loading step. Every project pins version 1.5.5.
 
-**Fan-out** — what a join does when a row on one side matches several rows on the other: the row is repeated once
-per match, and anything summed from it is counted several times. The query runs; the number is wrong.
+**Fan-out** — the usual name for what a join does when a row on one side has several partners on the other: the row
+is repeated once per partner, so one row of the result is no longer one row of that table. Count or average the
+result as if it were, and the query runs and the number is wrong. Block 4's repair: one row per order first, then
+join.
 
 **Fail fast** — stopping a pipeline at the first failed check, with the number in the message, instead of carrying
 on and producing a wrong table.
@@ -121,8 +125,9 @@ Most APIs answer in JSON.
 
 **Knowledge check** — a 10-minute closed-book check at the start of Sessions 2 and 3, on the session before.
 
-**Lab checkpoint** — the Moodle slot where you upload your diagnosis note at the end of each lab, with a first line
-saying who you explained it to and what you need help with. A lab is complete when it is in; labs carry no points.
+**Lab checkpoint** — the Moodle slot a lab ends with. In Session 1 you uploaded your diagnosis note. From Session 2
+the team's notebook is uploaded by the keyboard, and everyone else pastes the team's names and roles as their
+submission text. A lab is complete when it is in; labs carry no points.
 
 **`LEFT JOIN`** — a join that keeps every row of the left table; where the right table has no match, its columns are
 `NULL`.
@@ -144,6 +149,10 @@ join key matches nothing.
 
 **NULL-safe filter** — a condition that excludes one value while keeping the rows that have no value:
 `col IS DISTINCT FROM 'x'`, or `col != 'x' OR col IS NULL`.
+
+**Partner** — the row a join matches a row with. Every order has exactly one partner in `customers`; an order can
+have several partners in `order_items`, or none. `JOIN` keeps only the rows that found a partner; `LEFT JOIN` keeps
+every row of the left table.
 
 **Pagination** — an API sending its answer one page at a time. The response says how many pages and how many records
 there are; reading page 1 alone is part of the truth, with no error.
@@ -170,7 +179,7 @@ It decides what a join does to the row count.
 **Residual** — what is left when two numbers that should agree are subtracted. A residual is reported as a number,
 and explained as far as the documentation allows; the rest is reported as unexplained.
 
-**Row-count discipline** — saying how many rows you expect before you run a query, and counting after every join and
+**Row-count discipline** — saying how many rows a query should return before you run it, and counting after every join and
 every filter.
 
 **Schema** — the list of a table's columns and their types. `DESCRIBE` prints it.
@@ -190,17 +199,19 @@ how to get it, which is why a colleague can read your question in the query.
 **Stop (a run)** — what a pipeline does when a rule that must always hold is broken: a duplicate key, a total that
 does not add up. Compare *Quarantine*, which is for a single bad row.
 
-**Three counts** — after every join: the rows in the left table, the rows in the result, and the distinct left keys
-in the result. Together they say whether the join multiplied rows or dropped them.
+**Three counts** — after every join: the rows that went in, the rows that came out, and the distinct keys that came
+out. Together they say whether the join repeated rows or left some out, and what one row of the result is. With
+`JOIN`, all three equal means every row found exactly one partner; with `LEFT JOIN` it means only that every left
+row is there once.
 
 **Tidy** — a table where every column is one variable, every row is one observation, and every cell is one value.
 
 **Tolerance** — how close two numbers must be to count as agreeing: to the cent for money, to the source's rounding
 for tonnes and people.
 
-**The five parts** — how every homework question is answered, inside the notebook: the sentence (what the number
-measures, which rows it comes from, which rows the query left out), the row estimate with its source, the query and
-the number, the check in the kind the question names, and one line on how you would know if the number were wrong.
+**The four pieces** — how a Homework 2 question is answered, inside the notebook: the query, what it printed, the
+supplied check cell filled in, and one sentence (what the number measures, which rows it comes from, which rows the
+query left out). Homework 1 asked for five written parts and kept them; Homework 3's README says what it asks for.
 
 **Three kinds of check** — a sum splits into groups that add back up; a ranked list gets its row count and its top
 row reached a second way; a ratio gets its top and its bottom checked separately, on the same lines.
@@ -217,8 +228,9 @@ documentation, not in the column. A table has one unit per measure, or its sums 
 **Unpivot** — turning columns into rows: a wide table with a column per year becomes a long table with one row per
 year. DuckDB's `UNPIVOT` does it.
 
-**Validation** — a check written as code that can fail: a query whose answer must be a known number, and an assertion
-that stops the run if it is not. Four families: **key** (unique, never missing), **domain** (allowed values and
+**Validation** — a check written as code that can fail: a query whose answer must be a known number, compared with
+it. In a pipeline (Session 3) the comparison is an assertion that stops the run; in a lab notebook it prints the
+comparison's result for you to read: `True` or `False`, or a word such as `equal` or `NOT EQUAL`. Four families: **key** (unique, never missing), **domain** (allowed values and
 ranges), **count** (rows in = rows out + rows rejected), **reconciliation** (two computations agree).
 
 **Vacuous check** — a check that cannot fail on the data it is meant to catch: `assert n > 0`, a total compared with

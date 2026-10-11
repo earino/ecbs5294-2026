@@ -10,20 +10,20 @@ nav_order: 2
 
 **Mon 12 Oct 2026**
 
-## Block 3 — Joins and grain: keeping the row count honest
+## Block 3 — Joins: what is one row now?
 
 **Slides:** [View in browser](../units/session2/block1/slides.html) · [Download PDF](../units/session2/block1/slides.pdf)
 
-**Lab:** The revenue that grew when we joined · [starter repo](https://github.com/earino/ecbs5294-lab03-joins)
+**Lab:** The category table that came out short · [starter repo](https://github.com/earino/ecbs5294-lab03-joins)
 
-## Block 4 — Data that is not a table yet: APIs and JSON
+## Block 4 — When one row has several partners
 
 **Slides:** [View in browser](../units/session2/block2/slides.html) · [Download PDF](../units/session2/block2/slides.pdf)
 
-**Lab:** The revenue that was converted the wrong way · [starter repo](https://github.com/earino/ecbs5294-lab04-json-api)
+**Lab:** More orders than there are orders · [starter repo](https://github.com/earino/ecbs5294-lab04-repeated-rows)
 
 ## Assessments
 
-- **Homework 2 — Many tables and an API: the board-deck numbers** (15%) · [starter repo](https://github.com/earino/ecbs5294-hw02-joins-json) · [rubric](../assessments/hw2_rubric.md)
+- **Homework 2 — Tables that meet: three numbers for the board** (15%) · [starter repo](https://github.com/earino/ecbs5294-hw02-joins) · [rubric](../assessments/hw2_rubric.md)
 - **Knowledge check 2 (start of Session 2, closed-book)** (5%)
 

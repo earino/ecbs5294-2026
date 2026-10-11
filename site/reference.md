@@ -213,7 +213,7 @@ A query is evaluated in this order, not in the order it is written:
 FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT
 ```
 
-`GROUP BY` and the aggregates are Block 2's; `HAVING` is Block 3's, where it finds the keys that repeat.
+`GROUP BY` and the aggregates are Block 2's; `HAVING` is Block 4's, where it finds the keys that repeat.
 
 `WHERE` filters rows before they are grouped; `HAVING` filters groups after. A condition on an aggregate can only
 live in `HAVING` (DuckDB refuses it in `WHERE`: *WHERE clause cannot contain aggregates*).
@@ -236,7 +236,7 @@ ORDER BY revenue DESC;
 Every column in `SELECT` is either in `GROUP BY` or inside an aggregate. DuckDB refuses the query otherwise, and that
 refusal is a help: it means the question was not precise.
 
-**A share of a total** (Block 4). Divide each group's sum by the total, computed in a *scalar subquery*: a query in brackets
+**A share of a total.** Divide each group's sum by the total, computed in a *scalar subquery*: a query in brackets
 that returns one number. The denominator must be the same population as the numerator, so the subquery repeats the
 outer query's `WHERE`, word for word:
 
@@ -300,91 +300,98 @@ is the most frequent of them.
 
 A date written in a known format: `strptime('17/03/2010', '%d/%m/%Y')`.
 
-## 6. Joins: keeping the row count honest
+## 6. Joins: two tables, one row
 
-**Relationship kinds.** One-to-one (an order and its delivery address); one-to-many (an order and its items);
-many-to-many (reviews that cover several orders, orders with several reviews). A left row is repeated once for every
-match it has on the right. A join to a table that is unique on the join key cannot multiply the left rows; a join to
-anything that is not unique can.
+A join puts columns from two tables in one row, matched on a column they share. `FROM` one table, `JOIN` the other,
+`ON` the columns that must be equal. Give each table a short name with `AS`, and say which table every column comes
+from.
 
 ```sql
-SELECT o.order_id, o.order_date, c.state
+SELECT o.order_id, o.order_status, c.customer_state
 FROM orders AS o
-INNER JOIN customers AS c ON o.customer_id = c.customer_id;   -- only orders with a matching customer
+JOIN customers AS c ON c.customer_id = o.customer_id;     -- JOIN is INNER JOIN: only the rows that found a partner
 
-SELECT o.order_id, c.state
+SELECT o.order_id, i.price
 FROM orders AS o
-LEFT JOIN customers AS c USING (customer_id);                 -- every order, with NULL state where no match
+LEFT JOIN order_items AS i ON i.order_id = o.order_id;    -- every order; NULL price where an order has no items
 ```
 
-`ON a.x = b.y` names both columns; `USING (x)` is shorthand when the column has the same name on both sides.
-`RIGHT JOIN` is a `LEFT JOIN` written from the other side; `FULL JOIN` keeps the unmatched rows of both sides.
+`USING (x)` is shorthand for `ON a.x = b.x` when the column has the same name in both tables; the course writes `ON`.
+`RIGHT JOIN` is a `LEFT JOIN` written from the other side; `FULL JOIN` keeps the rows with no partner on both sides.
+Write a `LEFT JOIN` from the side you mean.
 
-**The three counts, after every join.** Rows in the left table; rows in the result; distinct left keys in the result.
+**After every join: what is one row now?** A row of the left table appears once for every partner it has. If every
+row has exactly one partner (an order and its customer), one row is still one order. If a row can have several (an
+order and its items), one row of the result is one item; with `LEFT JOIN`, an order with no items is one row too. A table that is unique on the join key cannot repeat the
+left table's rows; a table that is not unique can.
+
+**The three counts, after every join.** The rows that went in; the rows that came out; the distinct keys that came
+out.
 
 ```sql
-SELECT
-  (SELECT COUNT(*) FROM orders)                           AS left_rows,
-  COUNT(*)                                                AS result_rows,
-  COUNT(DISTINCT o.order_id)                              AS left_keys_in_result
+SELECT COUNT(*) FROM orders;                  -- the rows that went in
+
+SELECT COUNT(*)                   AS rows_in_result,
+       COUNT(DISTINCT o.order_id) AS distinct_orders_in_result
 FROM orders AS o
-JOIN order_items AS i USING (order_id);
+JOIN order_items AS i ON i.order_id = o.order_id;
 ```
 
-Result rows above left rows: the join multiplied (fan-out). Left keys in the result below left rows: the join dropped
-some. Say which you expected before you run it, and put the three counts in the commit message.
+With `JOIN`, all three equal means every row found exactly one partner. More rows out than distinct keys: some rows
+have several partners, and one row of the result is no longer one row of the left table (other texts call this
+*fan-out*). Fewer distinct keys out than rows in: some rows found no partner, and `JOIN` left them out. Say which you
+expect before you run it. A key made of two columns is counted as a pair: `COUNT(DISTINCT (order_id, order_item_id))`.
 
-**The anti-join**: the left rows that found no match. It is how you see what an `INNER JOIN` threw away.
+With `LEFT JOIN` the three counts say less: every left row is kept whether it found a partner or not, so three equal
+counts mean only that each left row is there once. To know how many found no partner, count the rows where the right
+table's key is `NULL`.
+
+**The rows with no partner** (other texts call this an *anti-join*): `LEFT JOIN`, then keep the rows where the right
+table's key is `NULL`. Test the side that may be missing.
 
 ```sql
-SELECT c.customer_id, c.state
-FROM customers AS c
-LEFT JOIN regions AS r ON c.state = r.state
-WHERE r.state IS NULL;
+SELECT o.order_id, o.order_status
+FROM orders AS o
+LEFT JOIN order_items AS i ON i.order_id = o.order_id
+WHERE i.order_id IS NULL;
 ```
 
-**Keep the unmatched rows, and label them**, so that a breakdown still adds up to its total:
+**Keep the rows with no partner, and label them**, so that a breakdown still adds up to its total:
 
 ```sql
-SELECT COALESCE(r.region, 'no region for ' || c.state) AS region,
-       COUNT(*) AS customers
-FROM customers AS c
-LEFT JOIN regions AS r ON c.state = r.state
-GROUP BY 1
-ORDER BY customers DESC;
+SELECT COALESCE(t.product_category_name_english, 'no English name') AS category,
+       COUNT(*)     AS items,
+       SUM(i.price) AS item_sales
+FROM order_items AS i
+JOIN products AS p ON p.product_id = i.product_id
+LEFT JOIN product_category_name_translation AS t ON t.product_category_name = p.product_category_name
+GROUP BY category
+ORDER BY item_sales DESC;
 ```
 
-**Fan-out, and the two patterns that avoid it.** A measure must be counted once. Decide where the dimension you
-group by lives.
-
-*(a) The dimension is on the measure's own table: no join at all.* Items sold per seller:
-
-```sql
-SELECT seller_id, COUNT(*) AS items_sold
-FROM order_items
-GROUP BY seller_id;
-```
-
-*(b) The dimension is on a parent table: aggregate the measure to the parent's grain first, in a CTE, then join.*
-Items per order, by customer state:
+**When one row has several partners: one row per order first** (Block 4). `COUNT(*)` counts the rows of the result,
+and `AVG` averages over them, whatever the column is called. If the question is about orders and the number is on a
+table with several rows per order, add it up to one row per order first, then join. A **CTE** (`WITH name AS (…)`)
+is a named step inside one query; several can be chained with commas, each reading the ones before.
 
 ```sql
-WITH order_size AS (                         -- one row per order
+WITH order_size AS (                          -- one row per order
   SELECT order_id, COUNT(*) AS n_items
   FROM order_items
   GROUP BY order_id
 )
-SELECT c.state,
-       COUNT(*)          AS orders,
-       AVG(s.n_items)    AS avg_items_per_order
+SELECT c.customer_state,
+       COUNT(*)       AS orders,
+       AVG(s.n_items) AS items_per_order
 FROM order_size AS s
-JOIN orders    AS o USING (order_id)         -- one order per order_size row
-JOIN customers AS c USING (customer_id)      -- one customer per order
-GROUP BY c.state;
+JOIN orders    AS o ON o.order_id = s.order_id          -- one order per order_size row
+JOIN customers AS c ON c.customer_id = o.customer_id    -- one customer per order
+GROUP BY c.customer_state;
 ```
 
-A **CTE** (`WITH name AS (…)`) is a named step inside one query; several can be chained with commas, each reading the
-ones before. `COUNT(DISTINCT …)` after a multiplying join is a patch that hides the fan-out; it does not fix a `SUM`.
+If everything the question needs is on one table, do not join at all: items sold per seller is `order_items` alone.
+`COUNT(DISTINCT …)` after a join that repeats rows repairs that one count; it does not repair an `AVG` or a `SUM`,
+and `SUM(DISTINCT price)` adds up different *values*, not different rows.
 
 ## 7. Data that is not a table yet: JSON and APIs
 
@@ -598,7 +605,8 @@ unit, allowed values, what a missing value means, and what cleaning did to it.
 
 ## 9. Validations as code
 
-A check is an assertion that **stops the run**, with the number in its message. Not a print; not a comment.
+In a pipeline, a check is an assertion that **stops the run**, with the number in its message. Not a print; not a
+comment. (A check in a lab notebook may print its comparison for you to read: the same query, without the stop.)
 
 The examples below are on a silver table `emissions`, one row per `(geo, year, sector)`, and its gold table
 `by_country`, one row per `(geo, year)`.

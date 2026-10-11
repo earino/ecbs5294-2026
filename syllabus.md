@@ -44,14 +44,20 @@ it fails out loud.
 ## Format and workload
 
 Each session runs two blocks of a 45-minute lecture plus a 45-minute hands-on lab, with a break between. Sessions 2
-and 3 open with a 10-minute closed-book knowledge check. In the lecture you predict, then watch: every query is on a slide, you write down what you
+and 3 open with a 10-minute closed-book knowledge check, which takes the first ten minutes of that block's lecture. In the lecture you predict, then watch: every query is on a slide, you write down what you
 expect, and the next slide shows what it printed; laptops are for notes. You type in the lab — each lab's project downloads
 during the five-minute stretch before it. The labs are where the learning happens:
 each hands you a colleague's report that runs without an error and prints a wrong number; you find out why, write the
-query the question actually needs, add the check that would have caught it, and explain it to the person next to you.
+query the question actually needs, run the check that would have caught it, and explain it to classmates.
 
-Expect about 22–25 hours of work outside class, most of it on the three homeworks: about 5 hours for Homework 1
-(the shortest, because it shares its week with DS1's last homework; its two stretch questions are not graded), 6–7 for Homework 2, 8–9 for Homework 3, and 3–4
+**From Session 2 the labs are done in teams of three, on one work laptop.** Each of you holds one role for a lab:
+the *keyboard* types; the *AI* person may use an assistant on their own device, and tells the team what it says;
+the *checker* says, before each query runs, which number must stay the same, go up or go down, and
+reads each check out. You keep the same team for the day and change role for the second lab. Homework, the knowledge
+checks and the exam are individual.
+
+Expect about 19–21 hours of work outside class, most of it on the three homeworks: about 5 hours for Homework 1
+(its two stretch questions are not graded), about 3 for Homework 2, 8–9 for Homework 3, and 3–4
 preparing for the exam, the mock and the Knowledge check 3 retry included. These are estimates; if you are well past one, say so on the Moodle forum. It is not a
 mark against you.
 
@@ -60,7 +66,7 @@ mark against you.
 ## Prerequisites and setup
 
 **DS1 — Computing for Analytical Work (ECBS5293)**, and everything it left you with: the terminal, `uv`, VS Code and
-the `.venv` kernel, paths from the project folder, Git from `git status` to `git archive`, the five-part diagnosis
+the `.venv` kernel, paths from the project folder, Git from `git status` to `git archive`, DS1's five-part diagnosis
 note, and explaining your fix to a neighbour. This course re-teaches none of it. Windows users work in **Git Bash**,
 as in DS1. DuckDB arrives with each project's `uv sync`: there is nothing new to install. No SQL is assumed. Bring a
 laptop to every session.
@@ -82,8 +88,9 @@ book a supported 30-minute rehearsal with a TA in the week before Session 1, on 
 
 You may use AI assistants to explain errors, suggest diagnostic steps, teach you concepts, and improve your writing.
 You may not use AI to submit code or explanations you cannot defend in person, run commands you cannot explain, or
-describe work you did not do. Two labs — Labs 3 and 5 — open with 20 minutes of no-AI time: practice for the
-closed-book exam, announced in session.
+describe work you did not do. In a team lab one person holds the AI role, on their own device: nobody else sees
+that screen, that person never types on the team's work laptop, and **for the first five minutes of every lab they
+share nothing from the assistant**, so that the team meets the problem with its own heads first.
 
 **AI writes SQL that runs. Running is not right.** An assistant given your schema will write a join that returns
 rows, and it will not tell you that the rows are tripled. The counts are yours to run. When you ask an assistant
@@ -100,28 +107,30 @@ it checks whether you understood the result.
 | Component | Weight |
 |---|---:|
 | Homework 1 — One table, the weekly numbers | 10% |
-| Homework 2 — Many tables and an API: the board-deck numbers | 15% |
+| Homework 2 — Tables that meet: three numbers for the board | 15% |
 | Homework 3 — Handover: the emissions brief | 15% |
 | Knowledge check 2 (start of Session 2, closed-book) | 5% |
 | Knowledge check 3 (start of Session 3, closed-book) | 5% |
 | Final exam (closed-book, in person, separate session) | 50% |
 
-**Homework** is a larger lab, graded against a rubric published with each assignment. Every question is answered in
-five parts, inside the notebook: the sentence (what the number measures, which rows it comes from, which rows the
-query left out), the row estimate with its source, the query and the number, the check in the kind the question
-names (a sum, a ranked list, a ratio), and one line on how you would know if the number were wrong. Homework 3, a
-pipeline, carries those lines in its note. The explanation carries more weight than the fix: a right number you cannot explain loses meaningful credit; a
-partial answer with an honest diagnosis can still do well. Each homework is due Saturday at 23:59, with a one-day
+**Homework** is a larger lab, graded against a rubric published with each assignment. From Homework 2, every
+question is answered in the notebook with the query, what it printed, the supplied check cell filled in, and one
+sentence (what the number measures, which rows it comes from, which rows the query left out); the notebook is the
+whole submission. (Homework 1, already out when this was decided, kept its five written parts and its archive.)
+Homework 3, a pipeline, carries its lines in its note until it is rebuilt. A right number whose check is empty, or
+whose sentence says it counts something else, is a number that could be right by accident, and it is scored that way. Each homework is due Saturday at 23:59, with a one-day
 late window; its self-check key is posted on Moodle after the late window closes. Do not expect graded feedback on Homework 3 before
 the exam: its self-check key and the mock exam with its key are that feedback.
 
-**Labs carry no points.** A lab is complete when your diagnosis note is on that lab's Moodle checkpoint; nobody
-signs you off. The last ten minutes of every lab are for explaining your work to a classmate, and the note's first
-line records who. The checkpoint is a completion record, not graded work: staff read every note that asks for help,
-and a sample of the rest. Labs cost you preparation if skipped, not points.
+**Labs carry no points.** A lab is complete when its checkpoint is on Moodle; nobody signs you off. In Session 1
+that was your diagnosis note. From Session 2 the labs are team work and there is no note: the team's notebook is the
+checkpoint (the keyboard uploads it; everyone else pastes the team's names and roles as their submission text). The
+last ten minutes of every lab are for explaining your work to the team next to you. The checkpoint is a completion
+record, not graded work: staff read a sample of notebooks, and come to any hand that goes up. Labs cost you
+preparation if skipped, not points.
 
-**Knowledge checks** are 10-minute closed-book checks on the previous session's material. Each is 5%. One question in
-each asks you to write a short query by hand. Marked papers are at the TA office from the Monday after each check,
+**Knowledge checks** are 10-minute closed-book checks on the previous session's material. Each is 5%. Each asks you
+to write at least one short query by hand. Marked papers are at the TA office from the Monday after each check,
 and each check's key is posted on Moodle that same Monday, so you have both checks and both keys before the exam.
 The key's model queries, scored clause by clause, are how the exam's written queries are marked. After Knowledge
 check 3, everyone gets a short **retry**: one query of the same kind, posted on Moodle on Monday 19 October, answered
@@ -145,8 +154,8 @@ November.
 |---|---|---|---|
 | Setup check | before Session 1 | Clone, sync, run, commit, archive, submit — once | submit to Moodle before Session 1 |
 | 1 — What is this data? | Mon 5 Oct 2026 | Grain, keys, types, and missing values; one table in SQL: rows, then groups | HW1 due **Sat 10 Oct, 23:59** |
-| 2 — What happens when tables meet? | Mon 12 Oct 2026 | Joins and grain, and finding the keys that repeat; APIs and JSON into tables, and shares of a total | HW2 due **Sat 17 Oct, 23:59** |
-| 3 — Can I trust the answer? | Mon 19 Oct 2026 | Bronze, silver, gold, and casting text safely; validations as code; the note that goes with the number | HW3 due **Sat 31 Oct, 23:59** |
+| 2 — What happens when tables meet? | Mon 12 Oct 2026 | How to join two tables: `JOIN`, `LEFT JOIN`, and the rows with no partner; then what one row is after a join, the keys that repeat, and one row per order first | HW2 due **Sat 17 Oct, 23:59** |
+| 3 — Can I trust the answer? | Mon 19 Oct 2026 | APIs and JSON into tables; then a small pipeline: casting text safely, checks that can fail, and the note that goes with the number | HW3 due **Sat 31 Oct, 23:59** |
 | Final exam | separate session | Closed-book, about 70 minutes | date set by the program calendar, on Moodle |
 
 Self-check keys are posted on the morning of **Monday 12 October** (HW1), **Monday 19 October** (HW2), and **Monday 2
@@ -158,10 +167,10 @@ November** (HW3, with the mock exam's key). The mock exam's questions and the un
 ## Submitting your work
 
 Everything is submitted through **Moodle**; nothing is graded from GitHub. You clone each lab and homework from a
-public starter repository and work locally; each homework's `SUBMITTING.md` gives the exact commands — commit, write
-`GIT_LOG.txt`, make the zip with `git archive` — and you upload the zip. Submissions must run as
-instructed from a fresh unzip and contain nothing you cannot explain. The zip carries the course's copy of
-third-party data under each dataset's own license; it is for grading only.
+public starter repository and work locally. For Homework 2 you upload the notebook, run top to bottom with its
+outputs saved, and nothing else; Homework 1's README says how its archive was made, and Homework 3's says what it
+asks for. Submissions must run as
+instructed inside a clean copy of the starter and contain nothing you cannot explain.
 
 ---
 
@@ -170,7 +179,7 @@ third-party data under each dataset's own license; it is for grading only.
 - **Late homework:** accepted up to one day late at −10% (nothing after Sunday 23:59, so each self-check key can post on Monday morning — before that afternoon's knowledge check for HW1 and HW2, and with the mock exam's key for HW3).
 - **Extensions:** ask before the deadline, by email, with a reason. Documented illness or emergencies are always accommodated.
 - **Missed knowledge check:** a documented absence moves that 5% to the final exam; an undocumented absence scores 0. No make-up checks.
-- **Missed lab:** do it at home that week and submit the diagnosis note to its Moodle checkpoint; say in the note if you want someone to look at it.
+- **Missed lab:** do it at home that week, alone, and upload the notebook to its Moodle checkpoint; put a hand up on the forum if you want someone to look at it.
 - **Regrading:** within 7 days, in writing, naming the rubric criterion you believe was misapplied. The whole submission is re-read; the grade can move either way.
 - **Oversubscription:** this is a core MSBA course. If it is oversubscribed, seats go to MSBA students first, then EDP and data-track students, then others as space permits — in order of sign-up and subject to program rules.
 - **Grade conversion:** CEU letter scale — A 94+ · A- 88–93 · B+ 80–87 · B 71–79 · B- 63–70 · C+ 58–62 (minimum pass) · F below.

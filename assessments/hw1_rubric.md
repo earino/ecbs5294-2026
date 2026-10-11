@@ -79,7 +79,7 @@ more than any later check.
 
 | Level | Points | Criteria |
 |---|---|---|
-| **Excellent** | 10 | All of these: `hw1-submission.zip` made with `git archive` contains everything `SUBMITTING.md` lists and nothing else (no `.venv/`); `GIT_LOG.txt` shows more than one commit, with messages that **name the cause** ("Count units on priced lines only: zero-priced lines are stock write-offs"); `data/raw/` is unchanged. |
+| **Excellent** | 10 | All of these: `hw1-submission.zip` made with `git archive` contains everything `SUBMITTING.md` lists, and no `.venv/` (the project's other committed files, such as `pyproject.toml` and `uv.lock`, belong in it); `GIT_LOG.txt` shows more than one commit, with messages that **name the cause** ("Count units on priced lines only: zero-priced lines are stock write-offs"); `data/raw/` is unchanged. |
 | **Satisfactory** | 6 | Neither of the other rows. For example: commit messages are "fix" or "update", or there is one commit only. |
 | **Needs Improvement** | 2 | Any of these: a file `SUBMITTING.md` lists is missing from the archive (`GIT_LOG.txt` included); `.venv/` is inside it; `data/raw/` is edited. |
 
