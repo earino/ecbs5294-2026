@@ -123,7 +123,7 @@ Most APIs answer in JSON.
 
 **Key test** — `SELECT COUNT(*), COUNT(DISTINCT key) FROM t`. If the two numbers differ, the key is not a key.
 
-**Knowledge check** — a 10-minute closed-book check at the start of Sessions 2 and 3, on the session before.
+**Knowledge check** — a 10-minute closed-book check at the start of Sessions 2 and 3, on the session before. One A4 sheet of notes, handwritten by you, both sides, is allowed.
 
 **Lab checkpoint** — the Moodle slot a lab ends with. In Session 1 you uploaded your diagnosis note. From Session 2
 the team's notebook is uploaded by the keyboard, and everyone else pastes the team's names and roles as their

@@ -7,7 +7,7 @@ nav_order: 2
 # DS2 — Working with Data
 
 **Program:** MSBA · **Credits:** 1.0 · **Academic year:** 2026–2027
-**Format:** 3 teaching sessions × 200 minutes + a closed-book final exam in a separate session
+**Format:** 3 teaching sessions × 200 minutes + a closed-book final exam in a separate session (one handwritten A4 sheet of notes allowed)
 **Instructor:** Eduardo Ariño de la Rubia · [RubiaE@ceu.edu](mailto:RubiaE@ceu.edu) · office hours by appointment
 
 ---
@@ -129,6 +129,9 @@ last ten minutes of every lab are for explaining your work to the team next to y
 record, not graded work: staff read a sample of notebooks, and come to any hand that goes up. Labs cost you
 preparation if skipped, not points.
 
+**Closed book, with one sheet.** The two knowledge checks and the final exam are closed-book: no laptop, no phone,
+no AI. You may bring one A4 sheet of notes, handwritten by you, both sides. Making the sheet is revision in itself.
+
 **Knowledge checks** are 10-minute closed-book checks on the previous session's material. Each is 5%. Each asks you
 to write at least one short query by hand. Marked papers are at the TA office from the Monday after each check,
 and each check's key is posted on Moodle that same Monday, so you have both checks and both keys before the exam.
@@ -156,7 +159,7 @@ November.
 | 1 — What is this data? | Mon 5 Oct 2026 | Grain, keys, types, and missing values; one table in SQL: rows, then groups | HW1 due **Sat 10 Oct, 23:59** |
 | 2 — What happens when tables meet? | Mon 12 Oct 2026 | How to join two tables: `JOIN`, `LEFT JOIN`, and the rows with no partner; then what one row is after a join, the keys that repeat, and one row per order first | HW2 due **Sat 17 Oct, 23:59** |
 | 3 — Can I trust the answer? | Mon 19 Oct 2026 | APIs and JSON into tables; then a small pipeline: casting text safely, checks that can fail, and the note that goes with the number | HW3 due **Sat 31 Oct, 23:59** |
-| Final exam | separate session | Closed-book, about 70 minutes | date set by the program calendar, on Moodle |
+| Final exam | separate session | Closed-book (one handwritten A4 sheet), about 70 minutes | date set by the program calendar, on Moodle |
 
 Self-check keys are posted on the morning of **Monday 12 October** (HW1), **Monday 19 October** (HW2), and **Monday 2
 November** (HW3, with the mock exam's key). The mock exam's questions and the ungraded Knowledge check 3 retry are posted on
