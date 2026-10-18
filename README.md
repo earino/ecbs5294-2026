@@ -1,7 +1,5 @@
 # Working with Data
 
-> ⚠️ Sessions 1, 2 and 3 are final.
-
 **ECBS5294** · Central European University · 2026–2027
 
 Course site: https://earino.github.io/ecbs5294-2026/

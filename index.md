@@ -7,8 +7,6 @@ nav_order: 1
 
 # Working with Data
 
-> ⚠️ Sessions 1, 2 and 3 are final.
-
 **ECBS5294** · Central European University · MSBA · 2026–2027
 
 One credit of practical instruction in getting real data into a shape you can trust, and proving the shape is right: grain, keys, types and missing values; SQL on DuckDB for one table and for many; then a small pipeline, from an API's pages and a statistics office's file to bronze, silver and gold, with a check at the steps that can lose something; and the habit of reconciling every number before saying what it means.
