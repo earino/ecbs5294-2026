@@ -7,11 +7,11 @@ nav_order: 1
 
 # Working with Data
 
-> ⚠️ Sessions 1 and 2 are final. Session 3 (Monday 19 October) is being rebuilt and is not ready yet; its materials will appear here when they are.
+> ⚠️ Sessions 1, 2 and 3 are final.
 
 **ECBS5294** · Central European University · MSBA · 2026–2027
 
-One credit of practical instruction in getting real data into a shape you can trust, and proving the shape is right: grain, keys, types and missing values; SQL on DuckDB for one table and for many; APIs and JSON into tidy tables; a bronze/silver/gold pipeline whose checks can fail; and the habit of reconciling every number before saying what it means.
+One credit of practical instruction in getting real data into a shape you can trust, and proving the shape is right: grain, keys, types and missing values; SQL on DuckDB for one table and for many; then a small pipeline, from an API's pages and a statistics office's file to bronze, silver and gold, with a check at the steps that can lose something; and the habit of reconciling every number before saying what it means.
 
 **Instructor:** Eduardo Ariño de la Rubia · [RubiaE@ceu.edu](mailto:RubiaE@ceu.edu)
 
@@ -23,7 +23,7 @@ first slide and the last: **no error is not the same as correct.**
 
 Three sessions, one question each: **What is this data? · What happens when tables meet? · Can I trust the answer?**
 SQL on DuckDB is the language, and the data is real: a UK online retailer's half-million invoice lines, a Brazilian
-marketplace's orders, the world's emissions by country and by sector, and two public APIs, cached for the room. Every
+marketplace's orders, the world's emissions by country, Europe's municipal waste, and the World Bank's pages, cached for the room. Every
 lab hands you a colleague's report that runs without an error and prints a wrong number. You find out why, write the
 query the question actually needs, run the check that would have caught it, and explain it to classmates. From
 Session 2 the labs are done in teams of three, on one laptop, each of you with a role: keyboard, AI, checker.
@@ -37,6 +37,6 @@ Before Session 1: the setup check, on the [Pre-course setup](site/setup.html) pa
 |:---:|:---|:---:|:---:|
 | 1 | [Session 1 — What is this data?](site/session1.html) | Mon 5 Oct 2026 | Released |
 | 2 | [Session 2 — What happens when tables meet?](site/session2.html) | Mon 12 Oct 2026 | Released |
-| 3 | Session 3 — Can I trust the answer? | Mon 19 Oct 2026 | — |
+| 3 | [Session 3 — Can I trust the answer?](site/session3.html) | Mon 19 Oct 2026 | Released |
 
 See the [Syllabus](syllabus.html) for assessment, policies, and setup.

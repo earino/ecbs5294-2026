@@ -1,10 +1,10 @@
 ---
-title: SQL and pipeline reference
+title: SQL reference
 layout: default
 nav_order: 6
 ---
 
-# SQL and pipeline reference
+# SQL reference
 
 Every pattern this course teaches, in DuckDB 1.5.5, and nothing it does not. Each example was run on DuckDB 1.5.5
 on small tables with the names shown (`orders`, `order_items`, `customers`, `lines`, …); change the names to yours.
@@ -25,7 +25,7 @@ Paths are always written from the project folder, `'data/raw/<file>'`, as every 
 | to keep the rows that match either of two things | `WHERE a OR b`; both: `AND`; mixed: parentheses | 2 |
 | a number that means "missing" turned into a label | `COALESCE(col, 'no value')` | 3 |
 | to know how many invoices, not how many lines | `COUNT(DISTINCT Invoice)` | 4 |
-| a check that two sums agree | `abs(a - b) < tolerance`, never `==` | 10 |
+| a check that two sums agree | `abs(a - b) < tolerance`, never `==` | 9 |
 | the rows a join lost | `LEFT JOIN … WHERE right.key IS NULL` | 6 |
 | the keys that repeat | `GROUP BY key HAVING COUNT(*) > 1` | 4, 6 |
 | text turned into a number without a silent `NULL` | `CAST`, then count what `TRY_CAST` swallowed | 5, 8 |
@@ -137,7 +137,7 @@ ORDER BY order_date DESC                      -- in what order
 LIMIT 10;                                     -- how many
 ```
 
-Filters: `=`, `!=`, `<`, `>=`; `AND` and `OR` with parentheses (without them, `AND` binds first; Block 6 shows the check it breaks);
+Filters: `=`, `!=`, `<`, `>=`; `AND` and `OR` with parentheses (without them, `AND` binds first);
 `IN ('a', 'b')`; `BETWEEN 1 AND 5` (both ends included); `LIKE 'A%'` (`%` is any text, `_` is one character).
 
 ```sql
@@ -169,7 +169,7 @@ SELECT left(Invoice, 1)          AS first_char,     -- '4', '5', 'C', 'A': the c
 FROM 'data/raw/online_retail.parquet' LIMIT 1;
 ```
 
-`split_part(text, ',', 2)` takes the second comma-separated piece (Block 5 unpacks Eurostat's key column with it).
+`split_part(text, ',', 2)` takes the second comma-separated piece (Block 6's labs unpack Eurostat's key column with it, in a supplied cell).
 `LIKE 'C%'` (`%` is any text) also matches an invoice that starts with `C`; the course writes `left(Invoice, 1) = 'C'`,
 because a character position says what it means and a pattern does not.
 
@@ -273,7 +273,7 @@ the number of rows you expect: *revenue is the sum of quantity times price over 
 
 ## 5. Types: what inference did
 
-`DESCRIBE` is Block 1's; `CAST` and `TRY_CAST` are taught in Block 5, where cleaning needs them.
+`DESCRIBE` is Block 1's; `CAST` and `TRY_CAST` are taught in Block 6, where silver needs them.
 
 `DESCRIBE` shows the type DuckDB chose for each column by reading the values. In Online Retail, a stock code with a
 letter in it (`85123A`) makes the whole `StockCode` column text, and an ID written with decimals (`13085.0`) comes back
@@ -337,7 +337,7 @@ FROM orders AS o
 JOIN order_items AS i ON i.order_id = o.order_id;
 ```
 
-With `JOIN`, all three equal means every row found exactly one partner. More rows out than distinct keys: some rows
+With `JOIN`, and a key that is unique in the table you start from, all three equal means every row found exactly one partner. More rows out than distinct keys: some rows
 have several partners, and one row of the result is no longer one row of the left table (other texts call this
 *fan-out*). Fewer distinct keys out than rows in: some rows found no partner, and `JOIN` left them out. Say which you
 expect before you run it. A key made of two columns is counted as a pair: `COUNT(DISTINCT (order_id, order_item_id))`.
@@ -393,312 +393,127 @@ If everything the question needs is on one table, do not join at all: items sold
 `COUNT(DISTINCT …)` after a join that repeats rows repairs that one count; it does not repair an `AVG` or a `SUM`,
 and `SUM(DISTINCT price)` adds up different *values*, not different rows.
 
-## 7. Data that is not a table yet: JSON and APIs
+## 7. Did every record arrive? An API's pages (Block 5)
 
-An API is a URL that returns data instead of a page. Its answer is a **document**, and the work is to find the tables
-hiding in it — **one table per grain**.
+An **API** is a web address that answers with data. The World Bank's answer is a **JSON** document, sent a page at a
+time; the course saves each page to a file once, under `data/raw/api/`, and never calls a server in class.
 
-| Shape in the document | The table it hides |
-|---|---|
-| a list of records `[{…}, {…}]` | one row per record |
-| a dictionary keyed by id `{"17": {…}, "18": {…}}` | one row per key; the key is a column |
-| a dictionary of dictionaries `{"2017-01-02": {"USD": …, "GBP": …}, …}` | one row per outer key per inner key: `(date, currency, value)` |
-| parallel lists `{"date": [...], "value": [...]}` | columns |
-| a list inside a record `{"order_id": 1, "items": [{…}, {…}]}` | a child table at a finer grain, with the parent's key in every row |
+**JSON in plain words.** `{…}` is a record of named values; `[…]` is a list. **What DuckDB does with any JSON
+file:** `read_json_auto` reads it; `->>'name'` takes a named value out of a record, as text; `->'name'` goes one level
+into a record and is still JSON; `unnest` turns a list into rows. **What this API does:** each page is a list of two
+things, the **metadata** (which page, how many pages, how many records per page, the `total` in the whole answer),
+then up to 1,000 records; and a series comes as several pages.
 
-DuckDB reads a list of records as a table. Nested objects become `STRUCT`s (read with a dot); lists inside a
-record are unnested into rows of a child table:
+**Supplied: the setup that turns the pages into tables.** Every lab and homework that reads the World Bank's pages
+has it in a setup cell. Read it once; you are never asked to write it.
 
 ```sql
--- the document: a list of orders; each has an order_id, a customer object, and a list of items
-SELECT order_id, customer.country AS country
-FROM read_json_auto('data/raw/api/orders.json');                  -- the orders table: one row per order
+CREATE OR REPLACE VIEW gdp_pages AS                     -- every page: the * reads page1, page2, ...
+SELECT json FROM read_json_auto('data/raw/api/worldbank/NY.GDP.MKTP.PP.KD_page*.json');
 
-SELECT order_id, item.sku, item.qty
-FROM (SELECT order_id, unnest(items) AS item
-      FROM read_json_auto('data/raw/api/orders.json'));           -- the items table: one row per order and item
+CREATE OR REPLACE VIEW gdp_records AS                   -- one row per record: the list on each page, unnested
+SELECT unnest(CAST(json AS JSON[])) AS record FROM gdp_pages WHERE json_type(json) = 'ARRAY';
+
+CREATE OR REPLACE VIEW gdp AS                           -- the table: the fields taken out, made numbers
+SELECT record->>'countryiso3code'      AS iso3,
+       record->'country'->>'value'     AS country,
+       CAST(record->>'date' AS INTEGER) AS year,
+       CAST(record->>'value' AS DOUBLE) AS gdp
+FROM gdp_records;
+
+CREATE OR REPLACE VIEW gdp_metadata AS                  -- one row per page: what it says about the whole answer
+SELECT CAST(json->>'page' AS INTEGER) AS page, CAST(json->>'pages' AS INTEGER) AS pages,
+       CAST(json->>'per_page' AS INTEGER) AS per_page, CAST(json->>'total' AS INTEGER) AS total
+FROM gdp_pages WHERE json_type(json) = 'OBJECT';
 ```
 
-A document keyed by id is clearer as a short Python loop: one row per key, the key kept as a column.
-
-```python
-import json
-
-doc = json.load(open("data/raw/api/states.json"))   # {"SP": {"name": "São Paulo", "region": "Southeast"}, …}
-rows = []
-for state, record in doc.items():
-    rows.append((state, record["name"], record["region"]))
-states = pd.DataFrame(rows, columns=["state", "name", "region"])
-con.sql("CREATE OR REPLACE TABLE states AS SELECT * FROM states")   # DuckDB reads a pandas table by its name
-```
-
-**A rate has a direction, and the document says which.** A response that carries `"base": "EUR"` and a number under
-another currency is telling you how many units of one are worth one of the other. Write the unit down before you use
-the number (*… per …*), read it from the document's own metadata rather than from a field name, and check one
-conversion by hand against the table's.
-
-**Pagination.** Many APIs answer one page at a time and say so in a metadata part of the response. A loader that
-reads page 1 of 4 returns a quarter of the truth and no error. Loop over every page, then reconcile the rows you have
-against the total the API reported:
-
-```python
-records = []
-page, pages = 1, 1
-while page <= pages:
-    meta, recs = json.load(open(f"data/raw/api/pages/page{page}.json"))   # [metadata, records]
-    pages = meta["pages"]
-    records.extend(recs)
-    page += 1
-assert len(records) == meta["total"], f"{len(records)} records loaded, the API reported {meta['total']}"
-```
-
-**Fetching a response, once.** Python's standard library is enough: build the URL with its parameters, name
-yourself in a `User-Agent` header (some servers, Frankfurter among them, answer `403 Forbidden` to Python's default
-one), set a timeout, check the status, and save the document exactly as it arrived:
-
-```python
-import json
-import urllib.parse
-import urllib.request
-from pathlib import Path
-
-params = urllib.parse.urlencode({"base": "EUR", "symbols": "USD"})
-url = f"https://api.frankfurter.dev/v1/2018-01-02?{params}"
-request = urllib.request.Request(url, headers={"User-Agent": "ecbs5294-course (student project)"})
-with urllib.request.urlopen(request, timeout=30) as response:
-    assert response.status == 200, f"HTTP {response.status} from {url}"
-    doc = json.load(response)
-Path("data/raw/api").mkdir(parents=True, exist_ok=True)
-Path("data/raw/api/eur_usd_2018-01-02.json").write_text(json.dumps(doc, indent=1))
-```
-
-**Offline first.** A response is fetched once, saved under `data/raw/api/` with the URL and the date in `DATA.md`,
-and the analysis reads the saved copy. Be polite to public servers: cache, never loop against them, no keys in code.
-
-## 8. Pipelines: bronze, silver, gold
-
-```text
-data/raw/  (bronze)   the files as they arrived. Committed, never edited.
-data/silver/          typed, keyed, one row per stated grain, validated. Made by scripts/clean.py. Not committed.
-data/gold/            the answer tables, at the question's grain. Made by scripts/report.py. Not committed.
-pipeline.py           runs clean.py, report.py, checks.py in order, from the project folder.
-```
-
-**Idempotent:** run it twice, get the same tables. Each step rebuilds its output from the layer below
-(`CREATE OR REPLACE TABLE …`, `COPY … TO` a file it overwrites); it never appends to what the last run left. A
-mistake in silver is always recoverable, because raw never changed: fix the script and rerun.
-
-**The cleaning moves, in SQL.** Read raw files as text first, so that nothing is converted before a step you control:
+**What you write: the `*`, and the count against the total.** A `*` in a file name reads every file that matches:
+`page*.json` reads all four pages, `page1.json` only the first. A table built from page 1 alone runs, with no error,
+and holds 1,000 of 3,975. So count it against what the pages say the whole answer holds:
 
 ```sql
-CREATE OR REPLACE TABLE bronze AS
-SELECT * FROM read_csv('data/raw/file.tsv', delim = '\t', header = true, all_varchar = true);
+SELECT (SELECT COUNT(*) FROM gdp)                       AS rows_in_gdp,
+       (SELECT total FROM gdp_metadata WHERE page = 1)  AS total_stated;   -- 3975 and 3975
 ```
 
-Split a packed column into its parts, and turn years-as-columns into one row per observation:
+**Places and groups.** The World Bank's table mixes places with groups (World, the regions, the income groups): the
+first row of a ranking is `World`. Its list of countries (`country_page1.json`, the view `places` in the labs) marks
+each group with the region `Aggregates`; a question about places joins to `places`, and a count of the places a table
+holds is `COUNT(DISTINCT iso3)` of the rows that found a partner in `places`.
 
-```sql
-CREATE OR REPLACE TABLE long AS
-SELECT *
-FROM (
-  SELECT split_part("freq,unit,geo\TIME_PERIOD", ',', 2) AS unit,
-         split_part("freq,unit,geo\TIME_PERIOD", ',', 3) AS geo,
-         * EXCLUDE ("freq,unit,geo\TIME_PERIOD")
-  FROM bronze
-)
-UNPIVOT INCLUDE NULLS (raw_value FOR year IN (COLUMNS('^[0-9]{4}$')));
-```
+## 8. Bronze, silver, gold (Block 6)
 
-`INCLUDE NULLS` keeps the empty cells. Without it, `UNPIVOT` silently drops every observation whose cell is empty, and
-the accounting below never sees them: rows in and rows out would still agree, because the missing rows were never
-counted in.
-
-Then the moves on a text value, each one a decision you can count:
-
-| Move | Expression | Say what it did |
+| Layer | What it is | In Block 6 |
 |---|---|---|
-| strip spaces | `TRIM(x)` | |
-| a sentinel becomes missing | `NULLIF(x, ':')` | how many `:` there were |
-| a value and the flag glued to it, apart | `split_part(x, ' ', 1)`, `split_part(x, ' ', 2)` | the census of the flags: a flag is information, **keep it** in its own column |
-| text becomes a number | `TRY_CAST(x AS DOUBLE)` | the rows it turned into `NULL` (§5) |
-| categories made comparable | `LOWER(TRIM(x))` | the census before and after |
+| **bronze** | the data exactly as it arrived, never edited: every later table can be rebuilt from it | the World Bank's pages, read into `gdp_bronze` and `population_bronze`: one row per record, every column text |
+| **silver** | cleaned and checked: the right types, consistent and explicit units, duplicates and missing values handled, sometimes joined; still at the detail of the records | `gdp_silver` and `population_silver`: the same rows, each value made a number with `CAST` |
+| **gold** | business-ready: shaped for the reports and the questions people ask, often aggregated | GDP per person, 2024: two silvers joined |
 
-**Units are a filter**: a silver table has one
-unit, named in the table or its dictionary. Rows that are totals of other rows (a region among its members) are
-flagged, `is_aggregate`, and kept out of any sum of the members.
+A convention, not a law: the names and the number of layers vary from team to team, and the idea (keep the raw data,
+clean it once, shape it for the reader) is older than the names. A layer is not a guarantee: silver is only as
+trustworthy as its checks, which is why this course counts between the layers. In a company each layer is stored as
+a table or a file; in our notebooks each is a view.
 
-**The accounting.** At the grain of one observation, every row lands in exactly one place, in this order: a value
-that cannot be read is *rejected* (with a reason, to `rejects.csv`); another unit is *excluded*; a total of other
-rows is *aggregate*; the rest is *retained* (a documented missing value, `:`, is retained as `NULL`). Print it on
-every run:
+**Supplied: bronze.** The setup reads the pages once into `gdp_bronze` and `population_bronze`, each with the columns
+`country`, `year` and `value`, all text, as the API sent them. You read it; you never write it.
 
-```text
-observations in = rejected + excluded + aggregate + retained
-```
-
-`CASE` tests its `WHEN`s in order and stops at the first that is true, so the precedence is the order you write
-them in. Here the cast is the plain one, so the accounting shows what it could not read. The empty cell comes first,
-and on its own line: its `raw_value` is `NULL`, and `NULL != ':'` is not true but `NULL`, so a rule written only as
-`TRIM(raw_value) != ':'` would let an empty cell fall through to *retained*.
+**Silver: the value made a number with `CAST`.** The same rows; the year and the value become numbers.
 
 ```sql
-CREATE OR REPLACE TABLE observed AS
-SELECT *,
-       CASE
-         WHEN raw_value IS NULL OR TRIM(raw_value) = '' THEN 'rejected'    -- an empty cell
-         WHEN value IS NULL AND TRIM(raw_value) != ':'  THEN 'rejected'    -- had something, and it did not cast
-         WHEN unit != 'THS_T'                           THEN 'excluded'    -- not the unit this table keeps
-         WHEN geo IN ('EU27_2020', 'EA20')              THEN 'aggregate'   -- a total of other rows
-         ELSE 'retained'                                                   -- including ':', kept as NULL
-       END AS destination,
-       CASE
-         WHEN raw_value IS NULL OR TRIM(raw_value) = '' THEN 'empty cell'
-         ELSE 'value is not a number: ' || raw_value
-       END AS reason                                                       -- read only for the rejected rows
-FROM (SELECT *, TRY_CAST(NULLIF(TRIM(raw_value), ':') AS DOUBLE) AS value FROM long);
+CREATE OR REPLACE VIEW gdp_silver AS
+SELECT country,
+       CAST(year AS INTEGER) AS year,
+       CAST(value AS DOUBLE) AS gdp
+FROM gdp_bronze;
 
-SELECT destination, COUNT(*) AS observations
-FROM observed
-GROUP BY destination
-ORDER BY destination;
-
-SELECT (SELECT COUNT(*) FROM bronze) * 2                 AS expected_in,   -- raw rows × the file's 2 year columns
-       COUNT(*)                                          AS observations_in,
-       COUNT(*) FILTER (WHERE destination = 'rejected')  AS rejected,
-       COUNT(*) FILTER (WHERE destination = 'excluded')  AS excluded,
-       COUNT(*) FILTER (WHERE destination = 'aggregate') AS aggregate,
-       COUNT(*) FILTER (WHERE destination = 'retained')  AS retained
-FROM observed;
-
-COPY (SELECT * FROM observed WHERE destination = 'rejected')
-TO 'data/silver/rejects.csv' (HEADER);
+CREATE OR REPLACE VIEW population_silver AS
+SELECT country,
+       CAST(year AS INTEGER) AS year,
+       CAST(value AS BIGINT) AS population
+FROM population_bronze;
 ```
 
-The reason has its own `CASE` for the same trap: `'value is not a number: ' || raw_value` is `NULL` when `raw_value`
-is, and a rejected row with no reason is a row nobody can act on.
-
-A `CASE` with an `ELSE` puts every row somewhere, so the four destinations always add up to `observations_in`. The
-check with teeth is the first column: the observations counted from the raw file, independently, must equal
-`observations_in`. And the rejected rows, read one by one, are how you find a flag you had not seen.
-
-**Persist** silver and gold as files the next step reads:
+**Gold: two silvers joined.** The `ON` line has two conditions: the same place and the same year (the World Bank's
+names are unique in each year of these pages).
 
 ```sql
-COPY (SELECT * FROM long) TO 'data/silver/long.parquet' (FORMAT parquet);
+CREATE OR REPLACE VIEW gold AS
+SELECT g.country, g.gdp / p.population AS gdp_per_person
+FROM gdp_silver AS g
+JOIN population_silver AS p
+  ON p.country = g.country AND p.year = g.year
+WHERE g.year = 2024 AND g.gdp IS NOT NULL;
 ```
 
-**Keep the latest row per key**, without window functions: find the latest date per key, then join back.
+**What you write: the count between the layers.** `COUNT(*)` counts rows; `COUNT` of a column counts the rows that
+hold a value: a `NULL` is still a row. A count that drops shows a loss; counts that agree cannot rule out every loss,
+so read the rows too.
 
 ```sql
-WITH latest AS (
-  SELECT customer_id, MAX(order_date) AS order_date
-  FROM orders
-  GROUP BY customer_id
-)
-SELECT o.*
-FROM orders AS o
-JOIN latest AS l USING (customer_id, order_date);
+SELECT COUNT(*) AS rows, COUNT(value) AS numbers FROM gdp_bronze;              -- 3975 and 3681
+SELECT COUNT(*) AS rows, COUNT(gdp) AS numbers FROM gdp_silver;                -- 3975 and 3681
+
+SELECT COUNT(*) - COUNT(gdp) AS no_number FROM gdp_silver WHERE year = 2024;   -- 23
 ```
 
-**The data dictionary** (one per silver table, in `docs/dictionary.md`, a tracked file): column, type, meaning,
-unit, allowed values, what a missing value means, and what cleaning did to it.
-
-## 9. Validations as code
-
-In a pipeline, a check is an assertion that **stops the run**, with the number in its message. Not a print; not a
-comment. (A check in a lab notebook may print its comparison for you to read: the same query, without the stop.)
-
-The examples below are on a silver table `emissions`, one row per `(geo, year, sector)`, and its gold table
-`by_country`, one row per `(geo, year)`.
-
-```python
-def one(sql):
-    return con.sql(sql).fetchone()[0]
-
-dupes = one("SELECT COUNT(*) - COUNT(DISTINCT (geo, year, sector)) FROM emissions")
-assert dupes == 0, f"{dupes} duplicate (geo, year, sector) rows in silver emissions"
-```
-
-The four families, each a query whose answer must be a known number:
+**`CAST` against `TRY_CAST`.** `CAST` refuses a value it cannot read, and names it: population made an `INTEGER`
+(which holds up to 2,147,483,647) stops at `'3552306404'`. **`TRY_CAST` never errors**: what it cannot read becomes
+`NULL`, silently. World's population is one of them, so a gold built on that silver has no GDP per person for World,
+and no error says so.
 
 ```sql
--- key: unique, on the key of THIS stage, and never NULL
-SELECT COUNT(*) - COUNT(DISTINCT (geo, year, sector)) AS duplicates,
-       COUNT(*) - COUNT(geo) AS null_geo
-FROM emissions;
-
--- domain: only allowed values, only sensible ranges (rows outside are quarantined, with a reason)
-SELECT COUNT(*) FROM emissions WHERE value < 0;
-SELECT unit, COUNT(*) FROM emissions WHERE unit != 'MIO_T' GROUP BY unit;
-
--- count: rows in = rows out + rows rejected
--- completeness: compare with what the contract EXPECTS, never with what the data happens to contain.
--- members is the contract's list, one row per expected country; the contract fixes the years, 2010 to 2024.
-SELECT COUNT(DISTINCT (geo, year)) AS present            -- must equal 27 members x 15 years = 405
-FROM emissions
-WHERE geo IN (SELECT geo FROM members) AND year BETWEEN 2010 AND 2024;
-
-SELECT geo FROM members                                    -- must return no rows: an expected country with no data
-WHERE geo NOT IN (SELECT geo FROM emissions WHERE geo IS NOT NULL);   -- NOT IN meets a NULL: no rows, silently
-
--- a locator, not a completeness check: which countries have fewer years than the data holds. It passes when a year
--- is missing for EVERY country, and a country with no rows makes no group, so it cannot fail for it.
-SELECT geo, COUNT(DISTINCT year) AS years_present
-FROM emissions
-GROUP BY geo
-HAVING COUNT(DISTINCT year) != (SELECT COUNT(DISTINCT year) FROM emissions);
-
--- reconciliation: two independent computations agree (gold's total equals silver's)
-SELECT (SELECT SUM(value) FROM emissions) - (SELECT SUM(total) FROM by_country) AS residual;
+SELECT COUNT(TRY_CAST(value AS INTEGER)) AS numbers_in_silver
+FROM population_bronze;                                                         -- 3810 of bronze's 3960
 ```
 
-**A row you reject and a run you stop are different decisions.** An invalid row (an unreadable value, a date
-outside the extract) is quarantined to `rejects.csv` with a reason, counted, and the run continues. A broken
-invariant (a duplicate key in silver, a breakdown that does not sum to its total, more rejects than the stated
-tolerance) stops the run. Stop at the first failed check, with the number in the message.
+**A Eurostat file (Lab 6's).** The first column packs several codes, separated by commas; there is one column per
+year; every cell is text: a number (`806`), a number and a flag after a space (`755 p`: provisional; `628 e`:
+estimated), or `:` (not available). In its bronze a number is a cell that does not start with a colon:
+`raw_value NOT LIKE ':%'`. `TRY_CAST` on a whole cell makes `NULL` of every number with a flag.
 
-**Checks that pass on wrong data.** For every check, name the wrong data it would pass:
+The first layer where a count drops, for no reason you can name, is the layer to repair.
 
-| Kind | Example | What it lets through |
-|---|---|---|
-| incorrect | a key check that only tests `geo IS NOT NULL` | every duplicate |
-| weak | `assert n > 0` | anything but an empty table |
-| tautological | gold's total compared with gold's total; a check that reuses the query it checks | everything |
-| missing | no count check at all | a filter that drops a third of the rows |
-
-**The fresh-clone test**, before you submit a pipeline:
-
-```bash
-git clone <your repository> fresh-copy
-cd fresh-copy
-uv sync
-uv run python pipeline.py
-```
-
-## 10. Reconciliation: which identity the number permits
-
-Every number is checked against an independent computation, with the identity the metric actually permits, and a
-stated tolerance (to the cent for money; to the source's rounding for tonnes and people).
-
-| The metric is… | The identity |
-|---|---|
-| **additive** (revenue, tonnes, orders) | the breakdown sums to a total computed by different code |
-| **a ratio** (revenue per customer, tonnes per person, a converted total) | numerator and denominator reconciled separately, on the same population |
-| **an average** (score by state, days to deliver) | recombines only with its weights: the overall mean is `SUM(n × mean) / SUM(n)`; averages do not add, and the average of averages is not the average |
-| **the same quantity from two sources** | a residual, stated as a number, explained as far as the documentation goes and otherwise reported as unexplained |
-
-```sql
-WITH by_state AS (
-  SELECT c.state, COUNT(*) AS n_items, AVG(i.price) AS mean_price
-  FROM order_items AS i
-  JOIN orders    AS o USING (order_id)
-  JOIN customers AS c USING (customer_id)
-  GROUP BY c.state
-)
-SELECT SUM(n_items * mean_price) / SUM(n_items) AS recombined,   -- equals the next line, to rounding
-       (SELECT AVG(price) FROM order_items)     AS overall
-FROM by_state;
-```
+## 9. Comparing two numbers
 
 **Compare with a tolerance, never with `=`.** Prices read from a file are usually `DOUBLE`, a binary fraction, and a
 sum of `DOUBLE`s depends on the order it was added up in. The same three prices, added in two orders:
@@ -727,18 +542,7 @@ In SQL the same test is `abs(a - b) < 0.005`, or both sides rounded, `ROUND(a, 2
 query, such as `4.50`, is an exact `DECIMAL` in DuckDB; that is why the example above casts to `DOUBLE`, the type of
 a price read from a file.
 
-## 11. The note that goes with the number
-
-Five to eight plain sentences for a reader who does not know SQL and will make a decision:
-
-1. the metric, with its grain, its filter, and its unit;
-2. the rows excluded, and how many;
-3. the assumptions;
-4. the reconciliation, stated: which two numbers agree;
-5. **what the data cannot answer**, as a claim about the data: *"this cannot tell you X, because the data has no Y"* —
-   not "more research is needed".
-
-## 12. Asking an assistant about a query
+## 10. Asking an assistant about a query
 
 **AI writes SQL that runs. Running is not right.** The counts are yours to run.
 

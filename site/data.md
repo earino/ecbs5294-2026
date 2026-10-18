@@ -26,7 +26,7 @@ Finding it is the work, and the census is how.
 | **Source** | Daqing Chen, *Online Retail II*, UCI Machine Learning Repository, [doi:10.24432/C5CG6D](https://doi.org/10.24432/C5CG6D) (the 2009–2010 sheet). |
 | **License** | CC BY 4.0. |
 | **As shipped** | `online_retail.parquet`: all 525,461 lines of that sheet, 8 columns, 3.2 MB. Converted from CSV to Parquet with the types DuckDB inferred; no rows or values changed. |
-| **Used in** | the setup check; the Block 1 lecture (in the Lab 1 project); the Block 2 lecture's "why SQL" demonstration; Lab 2; Homework 1. |
+| **Used in** | the setup check; the Block 1 lecture (in the Lab 1 project); the Block 2 lecture's "why SQL" demonstration; Lab 2; Homework 1; the final exam and the mock. |
 
 ## Our World in Data — CO₂ and greenhouse-gas emissions
 
@@ -36,7 +36,7 @@ Finding it is the work, and the census is how.
 | **Source** | Our World in Data, [*CO₂ and Greenhouse Gas Emissions*](https://github.com/owid/co2-data) (Rosado, Ritchie, Roser, Mathieu, Macdonald). |
 | **License** | CC BY 4.0 for Our World in Data's own work; each underlying series keeps its source's terms, named per column in the codebook. Cite Our World in Data and the named source. |
 | **As shipped** | `owid_co2.csv`: 15 of the file's columns, years 1990 to 2024, 8,883 rows; `owid_codebook.csv`, what each of those columns means. `countries.csv` (7,665 rows) is a further subset, made with the filter Lab 1 builds, for Block 2. |
-| **Used in** | Lab 1; the Block 2 lecture (`countries.csv`, in the Lab 2 project); Homework 3. |
+| **Used in** | Lab 1; the Block 2 lecture (`countries.csv`, in the Lab 2 project); the final exam and the mock. |
 
 ## Brazilian E-Commerce Public Dataset by Olist
 
@@ -46,7 +46,7 @@ Finding it is the work, and the census is how.
 | **Source** | Olist, [*Brazilian E-Commerce Public Dataset by Olist*](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), Kaggle. |
 | **License** | **CC BY-NC-SA 4.0.** NonCommercial: redistributed here for teaching only. ShareAlike: the subset is an adaptation, shared under the same license. The course's own code and text are not relicensed by it. |
 | **As shipped** | A **selected** subset, not a representative one: 2,653 of the 99,441 orders, chosen so that the situations the labs are about are present, with every item, payment, and review of those orders and every customer, product, and seller they refer to. The selection rule is in `DATA.md`. `orders` 2,653 rows · `order_items` 3,024 · `order_payments` 2,790 · `order_reviews` 2,681 · `customers` 2,653 · `products` 2,217 · `sellers` 903 · `product_category_name_translation` 71. |
-| **Used in** | the Block 3 and Block 4 lectures; Lab 3 (items, products and category names); Lab 4 (orders and payments); Homework 2 (orders, payments, customers and reviews); Lab 6; Knowledge check 3 and its ungraded retry, which quote small, unchanged extracts. |
+| **Used in** | the Block 3 and Block 4 lectures; Lab 3 (items, products and category names); Lab 4 (orders and payments); Homework 2 (orders, payments, customers and reviews); Knowledge check 3 and its ungraded retry, the final exam and the mock, which quote small, unchanged extracts. |
 
 ## Eurostat — municipal waste (`env_wasmun`)
 
@@ -56,17 +56,7 @@ Finding it is the work, and the census is how.
 | **Source** | Eurostat, dataset `env_wasmun`, through Eurostat's dissemination API (TSV). |
 | **License** | CC BY 4.0. Attribution: *Source: Eurostat, env_wasmun*, © European Union. |
 | **As shipped** | `env_wasmun.tsv`, unmodified: 742 rows, one column per year from 2010 to 2024. The first column packs four codes into one; Eurostat's code lists for them and for its observation flags ship beside it (`codelist_*.tsv`). |
-| **Used in** | Lab 5. |
-
-## Eurostat — greenhouse-gas emissions by source sector (`env_air_gge`)
-
-| | |
-|---|---|
-| **What it is** | Greenhouse-gas emissions by country, source sector, and year, in Eurostat's own file layout. |
-| **Source** | Eurostat, dataset `env_air_gge`, through Eurostat's dissemination API (TSV). |
-| **License** | CC BY 4.0. Attribution: *Source: Eurostat, env_air_gge*, © European Union. |
-| **As shipped** | `env_air_gge_ghg.tsv`: the rows for all greenhouse gases together in CO₂ equivalent (`GHG`), every source sector, every country, every unit the file carries; 10,444 rows, one column per year from 2010 to 2024. The header and every kept row are byte for byte as published. |
-| **Used in** | the Block 5 lecture (in the Lab 5 project); Homework 3. |
+| **Used in** | Lab 6 (waste per person); Homework 3 (the waste totals, in thousand tonnes); the final exam. |
 
 ## Frankfurter — European Central Bank reference rates
 
@@ -76,7 +66,7 @@ Finding it is the work, and the census is how.
 | **Source** | The [Frankfurter API](https://frankfurter.dev), which serves the European Central Bank's euro foreign exchange reference rates. The request is written in `DATA.md`. |
 | **License** | ECB statistics may be reused with the source acknowledged: *Source: European Central Bank*. The Frankfurter API is open source (MIT). |
 | **As shipped** | `api/frankfurter_eur.json`: the response exactly as received — one JSON document with rates for 555 dates. The ECB publishes on its business days only. |
-| **Used in** | Session 3 (being rebuilt). It is no longer part of Session 2. |
+| **Used in** | No lab or homework this year: Session 3 reads the World Bank's pages instead. |
 
 ## World Bank — World Development Indicators
 
@@ -86,7 +76,7 @@ Finding it is the work, and the census is how.
 | **Source** | World Bank Indicators API v2, [api.worldbank.org](https://api.worldbank.org/v2). The requests are written in `DATA.md`. |
 | **License** | CC BY 4.0. Attribution: *World Bank, World Development Indicators*. |
 | **As shipped** | Each API response exactly as received, one file per page, under `api/worldbank/`: four pages per indicator (3,975 records each), and one page of country metadata (295 entries). |
-| **Used in** | Session 3 (being rebuilt); Homework 3 (both indicators). It is no longer part of Session 2. |
+| **Used in** | The Block 5 lecture (GDP) and Lab 5 (population, the country list), in the Lab 5 project; the Block 6 lecture (GDP and population, in the Lab 6 project); Homework 3 (population); the final exam and the mock. |
 
 ## EU-27 country codes
 

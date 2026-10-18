@@ -15,12 +15,14 @@ nav_order: 2
 ## What this course is for
 
 Real data arrives messy. Types are wrong, values are missing in three different notations, there is no obvious key,
-and the interesting part is buried in nested JSON that nobody documented. The analysis you actually want to run is
+and an API sends the answer in pages. The analysis you actually want to run is
 rarely the hard part — getting the data into a shape where that analysis is possible, and being able to show the
 shape is right, is where the work goes.
 
-This course is one credit of practical instruction in exactly that layer: SQL on DuckDB for one table and for many,
-APIs and JSON into tidy tables, and a small pipeline whose checks can fail. Almost nothing in it crashes. The query
+This course is one credit of practical instruction in exactly that layer: tables, joins and pipelines. SQL on DuckDB
+for one table and for many, then a small pipeline in a notebook, from an API's pages and a statistics office's file:
+the reading and parsing are supplied, and you build bronze, silver and gold (raw data kept as it arrived, cleaned
+once, then shaped for the question) and check the steps that can lose something. Almost nothing in it crashes. The query
 runs, the number comes out, and the number is wrong — a join tripled the revenue, a filter quietly dropped every row
 with a missing value. The course's thesis is one sentence: **no error is not the same as correct.** The skill is to
 look for evidence of wrongness before anyone complains, and then to build the check into the code so that next time
@@ -34,8 +36,8 @@ it fails out loud.
 2. **Read a column's type** and say what it did to the values; decide what "missing" means, and state what `NULL` does to a filter, a count, an average, and a join.
 3. **Answer a business question from one table in SQL** — filter, calculate, aggregate, group — and say how many rows to expect.
 4. **Join tables without corrupting the result** — choose the join the question needs, count before and after, find the unmatched rows, and aggregate at the right grain.
-5. **Turn a JSON document or an API response into tidy tables**, one table per grain, and persist them.
-6. **Build a bronze/silver/gold pipeline** that runs from a fresh clone, leaves the raw data untouched, and validates itself with checks that can fail.
+5. **Check a table made from an API's pages** against what the pages say they hold, and find the records it never read.
+6. **Build bronze, silver and gold**: keep the raw data as it arrived, clean it once into silver, shape gold for the question, and count between the layers to find which one lost a number.
 7. **Reconcile every number** against an independent computation before reporting it.
 8. **Say what a number shows** — what it assumes, which rows it excludes and why, and what the data cannot answer.
 
@@ -56,8 +58,8 @@ the *checker* says, before each query runs, which number must stay the same, go 
 reads each check out. You keep the same team for the day and change role for the second lab. Homework, the knowledge
 checks and the exam are individual.
 
-Expect about 19–21 hours of work outside class, most of it on the three homeworks: about 5 hours for Homework 1
-(its two stretch questions are not graded), about 3 for Homework 2, 8–9 for Homework 3, and 3–4
+Expect about 14–15 hours of work outside class, most of it on the three homeworks: about 5 hours for Homework 1
+(its two stretch questions are not graded), about 3 for Homework 2, about 3 for Homework 3, and 3–4
 preparing for the exam, the mock and the Knowledge check 3 retry included. These are estimates; if you are well past one, say so on the Moodle forum. It is not a
 mark against you.
 
@@ -80,7 +82,7 @@ assumes, each with the DS1 page that teaches it and a short exercise. Do it befo
 practice; the setup check is the evidence. When you submit the setup check, say in the Moodle text box whether you
 took DS1 and roughly how long setup took you. If you did not take DS1, or setup failed or took you more than an hour,
 book a supported 30-minute rehearsal with a TA in the week before Session 1, on Moodle. The [Glossary](site/glossary.html) defines every term used here, and the
-[SQL and pipeline reference](site/reference.html) has every query pattern the course teaches.
+[SQL reference](site/reference.html) has every query pattern the course teaches.
 
 ---
 
@@ -108,7 +110,7 @@ it checks whether you understood the result.
 |---|---:|
 | Homework 1 — One table, the weekly numbers | 10% |
 | Homework 2 — Tables that meet: three numbers for the board | 15% |
-| Homework 3 — Handover: the emissions brief | 15% |
+| Homework 3 — Waste per person: two files, three layers | 15% |
 | Knowledge check 2 (start of Session 2, closed-book) | 5% |
 | Knowledge check 3 (start of Session 3, closed-book) | 5% |
 | Final exam (closed-book, in person, separate session) | 50% |
@@ -117,7 +119,7 @@ it checks whether you understood the result.
 question is answered in the notebook with the query, what it printed, the supplied check cell filled in, and one
 sentence (what the number measures, which rows it comes from, which rows the query left out); the notebook is the
 whole submission. (Homework 1, already out when this was decided, kept its five written parts and its archive.)
-Homework 3, a pipeline, carries its lines in its note until it is rebuilt. A right number whose check is empty, or
+In Homework 3 you also write each question's count yourself, and end with a short reflection on the course. A right number whose check is empty, or
 whose sentence says it counts something else, is a number that could be right by accident, and it is scored that way. Each homework is due Saturday at 23:59, with a one-day
 late window; its self-check key is posted on Moodle after the late window closes. Do not expect graded feedback on Homework 3 before
 the exam: its self-check key and the mock exam with its key are that feedback.
@@ -158,7 +160,7 @@ November.
 | Setup check | before Session 1 | Clone, sync, run, commit, archive, submit — once | submit to Moodle before Session 1 |
 | 1 — What is this data? | Mon 5 Oct 2026 | Grain, keys, types, and missing values; one table in SQL: rows, then groups | HW1 due **Sat 10 Oct, 23:59** |
 | 2 — What happens when tables meet? | Mon 12 Oct 2026 | How to join two tables: `JOIN`, `LEFT JOIN`, and the rows with no partner; then what one row is after a join, the keys that repeat, and one row per order first | HW2 due **Sat 17 Oct, 23:59** |
-| 3 — Can I trust the answer? | Mon 19 Oct 2026 | APIs and JSON into tables; then a small pipeline: casting text safely, checks that can fail, and the note that goes with the number | HW3 due **Sat 31 Oct, 23:59** |
+| 3 — Can I trust the answer? | Mon 19 Oct 2026 | A small pipeline, and two questions at every step. Did every record arrive? An API's pages as a table, counted against what the pages say they hold. Did every value survive? Bronze, silver and gold (raw as it arrived, cleaned, shaped for the question), `CAST` against `TRY_CAST`, and the count between the layers | HW3 due **Sat 31 Oct, 23:59** |
 | Final exam | separate session | Closed-book (one handwritten A4 sheet), about 70 minutes | date set by the program calendar, on Moodle |
 
 Self-check keys are posted on the morning of **Monday 12 October** (HW1), **Monday 19 October** (HW2), and **Monday 2
@@ -170,9 +172,8 @@ November** (HW3, with the mock exam's key). The mock exam's questions and the un
 ## Submitting your work
 
 Everything is submitted through **Moodle**; nothing is graded from GitHub. You clone each lab and homework from a
-public starter repository and work locally. For Homework 2 you upload the notebook, run top to bottom with its
-outputs saved, and nothing else; Homework 1's README says how its archive was made, and Homework 3's says what it
-asks for. Submissions must run as
+public starter repository and work locally. For Homeworks 2 and 3 you upload the notebook, run top to bottom with its
+outputs saved, and nothing else; Homework 1's README says how its archive was made. Submissions must run as
 instructed inside a clean copy of the starter and contain nothing you cannot explain.
 
 ---

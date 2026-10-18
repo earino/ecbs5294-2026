@@ -10,4 +10,20 @@ nav_order: 3
 
 **Mon 19 Oct 2026**
 
-*Materials will be released before class.*
+## Block 5 — Did every record arrive?
+
+**Slides:** [View in browser](../units/session3/block1/slides.html) · [Download PDF](../units/session3/block1/slides.pdf)
+
+**Lab:** World population, from the World Bank's pages · [starter repo](https://github.com/earino/ecbs5294-lab05-json-pages)
+
+## Block 6 — Did every value survive? Bronze, silver, gold
+
+**Slides:** [View in browser](../units/session3/block2/slides.html) · [Download PDF](../units/session3/block2/slides.pdf)
+
+**Lab:** Waste per person: bronze, silver, gold · [starter repo](https://github.com/earino/ecbs5294-lab06-layers)
+
+## Assessments
+
+- **Homework 3 — Waste per person: two files, three layers** (15%) · [starter repo](https://github.com/earino/ecbs5294-hw03-per-person) · [rubric](../assessments/hw3_rubric.md)
+- **Knowledge check 3 (start of Session 3, closed-book)** (5%)
+

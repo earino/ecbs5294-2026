@@ -30,13 +30,13 @@ plain `JOIN` leaves out.
 **API** — a web address that returns data instead of a page. You send a request (often with parameters in the
 address) and get back a document, usually JSON.
 
-**Assertion** — a line of code that stops the program if a condition is false: `assert duplicates == 0, f"{duplicates} duplicate keys"`. A pipeline's checks are assertions (Session 3). A check in a lab notebook may print its comparison instead, for you to read.
+**Assertion** — a line of code that stops the program if a condition is false: `assert duplicates == 0, f"{duplicates} duplicate keys"`. The course's notebook checks print `PASS` or `FAIL` instead, for you to read.
 
 **Base (of a rate)** — the currency a set of exchange rates is quoted against, stated in the response itself. It
 decides which way every rate points: write the unit down (*… per …*) before you multiply or divide by it.
 
-**Bronze** — the first layer of a pipeline: the data exactly as it arrived, never edited, with a record of where it
-came from and when. In this course, `data/raw/`.
+**Bronze** — the first layer: the data exactly as it arrived, never edited, so that every later table can be rebuilt
+from it (Block 6). In this course, the files in `data/raw/`, and the views made straight from them.
 
 **Cache** — a saved copy of an API's answer, kept in the project (`data/raw/api/`) so the analysis never depends on
 the network and always reads the same document.
@@ -82,8 +82,8 @@ is repeated once per partner, so one row of the result is no longer one row of t
 result as if it were, and the query runs and the number is wrong. Block 4's repair: one row per order first, then
 join.
 
-**Fail fast** — stopping a pipeline at the first failed check, with the number in the message, instead of carrying
-on and producing a wrong table.
+**Fail fast** — stopping at the first failed check, with the number in the message, instead of carrying on and
+producing a wrong table. `CAST` fails fast; `TRY_CAST` does not.
 
 **Flag** — a letter a statistics office attaches to a value to say something about it, such as *estimated* or
 *provisional*. In a raw file it can be glued to the number: Eurostat's municipal waste file has `628 e`, 628 kg per
@@ -92,10 +92,11 @@ inhabitant, estimated. A flag is information: it is kept, in a column of its own
 **Foreign key** — a column that holds another table's key, such as `customer_id` in an orders table. It is what a
 join matches on.
 
-**Fresh-clone test** — cloning your project into a new folder, running `uv sync` and the pipeline, and checking that
-it works. If it runs only on your laptop, it does not run.
+**Fresh-clone test** — cloning your project into a new folder, running `uv sync`, and running the notebook from the
+top: *Restart*, then *Run All*. If it runs only on your laptop, it does not run.
 
-**Gold** — the last layer of a pipeline: the answer tables, at the grain of the question, made by code from silver.
+**Gold** — the last layer: business-ready, shaped for the reports and the questions people ask, often summed or
+counted by group (Block 6). In Block 6, one table for one briefing.
 
 **Grain** — what one row of a table is: one invoice line, one country in one year, one order. Finish the sentence
 *one row is one ___*, and prove it with the key test, before computing anything.
@@ -106,8 +107,8 @@ name, so that an aggregate can be computed per group.
 **`HAVING`** — the clause that filters groups after `GROUP BY`, for example `HAVING COUNT(*) > 100`. `WHERE` filters
 rows before grouping and cannot use an aggregate.
 
-**Idempotent** — a step that gives the same result however many times you run it. A pipeline step rebuilds its table
-from the layer below every time; it never adds to what the last run left.
+**Idempotent** — a step that gives the same result however many times you run it. Each layer is made again from the
+layer below every time; it never adds to what the last run left.
 
 **Inference (type inference)** — DuckDB guessing each column's type by reading its values. One stock code with a letter
 in it (`85123A`) makes Online Retail's whole `StockCode` column text. `DESCRIBE` shows what it guessed.
@@ -160,14 +161,14 @@ there are; reading page 1 alone is part of the truth, with no error.
 **Parquet** — a file format for tables: the same rows as a CSV, stored by column, compressed, with the types saved.
 DuckDB reads it directly.
 
-**Pipeline** — a set of scripts that turns raw data into answer tables, in order, every time the same way. In this
-course: `pipeline.py` runs `clean.py` (bronze to silver), `report.py` (silver to gold), and `checks.py`.
+**Pipeline** — the steps that turn raw data into answer tables, in order, every time the same way. In this course,
+the cells of a notebook: bronze, then silver, then gold, each made by code from the layer before, never by hand.
 
 **`PROJECT_ROOT` anchor** — the first cell of every notebook, which finds the project folder and moves there, so that
 `'data/raw/…'` means the same file wherever the notebook was opened from (DS1, Block 1).
 
-**Quarantine** — setting an invalid row aside, in a rejects file with the reason, instead of either keeping it or
-silently dropping it. The run continues, and the accounting counts it.
+**Quarantine** — setting an invalid row aside, with the reason, instead of either keeping it or silently dropping it.
+Not taught this year; the word appears in older notes.
 
 **Reconciliation** — checking a number against a second, independent computation, using the identity the number
 permits: an additive measure's breakdown sums to its total; a ratio's numerator and denominator are checked
@@ -190,14 +191,15 @@ check your own work before the next knowledge check or the exam.
 **Sentinel** — a value that stands in for "missing": `:`, `N/A`, `-999`, sometimes `0`. It has to be turned into
 `NULL` on purpose, or it is counted as data.
 
-**Silver** — the middle layer of a pipeline: typed, keyed, one row per stated grain, validated, and documented in a
-data dictionary. Made by code from bronze.
+**Silver** — the middle layer: cleaned and checked. The right types, consistent and explicit units, duplicates and
+missing values handled, sometimes joined with other data; still at the detail of the records, not summed (Block 6). In this course, also: the flags kept, and every
+number bronze had. A layer is only as good as its checks.
 
 **SQL** — the language of questions to tables. It is declarative: you write *what* you want, and the database decides
 how to get it, which is why a colleague can read your question in the query.
 
-**Stop (a run)** — what a pipeline does when a rule that must always hold is broken: a duplicate key, a total that
-does not add up. Compare *Quarantine*, which is for a single bad row.
+**Stop (a run)** — what code should do when a rule that must always hold is broken: a duplicate key, a total that
+does not add up, a cell `CAST` cannot read.
 
 **Three counts** — after every join: the rows that went in, the rows that came out, and the distinct keys that came
 out. Together they say whether the join repeated rows or left some out, and what one row of the result is. With
@@ -211,7 +213,7 @@ for tonnes and people.
 
 **The four pieces** — how a Homework 2 question is answered, inside the notebook: the query, what it printed, the
 supplied check cell filled in, and one sentence (what the number measures, which rows it comes from, which rows the
-query left out). Homework 1 asked for five written parts and kept them; Homework 3's README says what it asks for.
+query left out). Homework 1 asked for five written parts and kept them; Homework 3 adds a count you write yourself under each question.
 
 **Three kinds of check** — a sum splits into groups that add back up; a ranked list gets its row count and its top
 row reached a second way; a ratio gets its top and its bottom checked separately, on the same lines.
@@ -229,9 +231,8 @@ documentation, not in the column. A table has one unit per measure, or its sums 
 year. DuckDB's `UNPIVOT` does it.
 
 **Validation** — a check written as code that can fail: a query whose answer must be a known number, compared with
-it. In a pipeline (Session 3) the comparison is an assertion that stops the run; in a lab notebook it prints the
-comparison's result for you to read: `True` or `False`, or a word such as `equal` or `NOT EQUAL`. Four families: **key** (unique, never missing), **domain** (allowed values and
-ranges), **count** (rows in = rows out + rows rejected), **reconciliation** (two computations agree).
+it. In the labs and homeworks it prints `PASS` or `FAIL` first. The course's checks are mostly counts: the key test,
+the three counts of a join, a count against what a document promises, and the count between two layers.
 
 **Vacuous check** — a check that cannot fail on the data it is meant to catch: `assert n > 0`, a total compared with
 itself. Ask of every check: *what wrong data would this pass?*
